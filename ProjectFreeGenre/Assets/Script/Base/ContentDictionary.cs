@@ -15,9 +15,15 @@ public class ContentDictionary<T> where T : IDictionaryContent
         return dict[key];
     }
 
-    public void AddDict(T content)
+    public bool AddDict(T content)
     {
-        dict.Add(content.ID, content);
+        if (dict.ContainsKey(content.ID)) return false;
+
+        else
+        {
+            dict.Add(content.ID, content);
+            return true;
+        }
     }
 
     public void ClearDict()
