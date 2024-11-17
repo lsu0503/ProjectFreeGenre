@@ -8,6 +8,6 @@ public class ItemData : ScriptableObject
     public int id;
     public int damage;
     public int attackRate;
-    public Sprite icon;
+    public Sprite sprite;
     public AnimatorOverrideController animator;
 }

@@ -8,6 +8,7 @@ public class EquipItem : MonoBehaviour
     [SerializeField] private ItemData data;
     private List<GameObject> hitList = new List<GameObject>();
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private Collider attackCollider;
 
     private void Awake()
@@ -15,6 +16,8 @@ public class EquipItem : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = data.animator;
         attackCollider = GetComponent<Collider>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = data.sprite;
     }
 
     private void OnTriggerEnter(Collider other)
