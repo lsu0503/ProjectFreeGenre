@@ -7,12 +7,14 @@ public abstract class Monster : MonoBehaviour
     public MonsterStatSO statSO;
     private SpriteRenderer sprite;
     protected GameObject player;
+    protected Rigidbody rb;
 
     // Start is called before the first frame update
     protected void Start()
     {
         player = GameManager.Instance.player.gameObject;
         sprite = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody>();
         StatUpdate();
     }
 

@@ -18,6 +18,6 @@ MonoBehaviour:
   attackBody: 1
   attackBullet: 5
   attackDelay: 3
-  speed: 3
+  speed: 15
   knockBackResistance: 0
   distance: 4

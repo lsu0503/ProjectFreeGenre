@@ -11,7 +11,8 @@ public class MonsterShort : Monster
         if (distance > statSO.distance)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            transform.position += direction * statSO.speed * Time.deltaTime;
+            Vector3 targetVelocity = direction * statSO.speed;
+            rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime);
         }
     }
 }

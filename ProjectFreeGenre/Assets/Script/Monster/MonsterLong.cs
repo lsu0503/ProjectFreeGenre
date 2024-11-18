@@ -17,13 +17,17 @@ public class MonsterLong : Monster
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
+
         if (distance > statSO.distance)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            transform.position += direction * statSO.speed * Time.deltaTime;
+            Vector3 targetVelocity = direction * statSO.speed;
+            rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime);
         }
         else
         {
+            // 공격 범위 내에 있을 때 속도를 0으로 설정
+            rb.velocity = Vector3.zero;
             AttackDelay();
         }
     }
