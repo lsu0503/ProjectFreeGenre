@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06bb0d9a3d2e08c428ee2d0755051af8, type: 3}
-  m_Name: Imp
+  m_Script: {fileID: 11500000, guid: 88c0bdcaa31de2e438dfb516a2eb3ba1, type: 3}
+  m_Name: Katana
   m_EditorClassIdentifier: 
-  type: 0
-  hp: 5
-  attack: 1
-  attackDelay: 0
-  speed: 5
-  knockBackResistance: 1
-  distance: 0
+  id: 1
+  damage: 35
+  attackRate: 2
+  sprite: {fileID: 21300000, guid: 9d26eb3083cdce04ab910f015e08f174, type: 3}
+  animator: {fileID: 22100000, guid: 8064c6fcd8d411d4f8e8e6453ce2ba52, type: 2}

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public PlayerMovement playerMove;
+
     private void Awake()
     {
-        GameManager.Instance.Player = this;
+        GameManager.Instance.player = this;
+        playerMove = GetComponent<PlayerMovement>();
     }
 }
