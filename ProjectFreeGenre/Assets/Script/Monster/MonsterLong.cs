@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MonsterLong : Monster
 {
+    public GameObject bullet;
     private float attackDelayTmp;
 
     private void Start()
@@ -42,6 +43,10 @@ public class MonsterLong : Monster
 
     void Attack()
     {
+        GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
+        MonsterBullet monsterBullet = bulletInstance.GetComponent<MonsterBullet>();
 
+        monsterBullet.attack = statSO.attackBullet;
+        monsterBullet.direction = (player.transform.position - transform.position).normalized;
     }
 }
