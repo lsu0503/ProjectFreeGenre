@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum StatType
+public enum MonsterType
 {
+    Boss,
     Normal,
-    Range,
-    Boss
+}
+public enum AttackType
+{
+    ShortRange,
+    LongRange,
 }
 
-[CreateAssetMenu(fileName = "MonsterStat", menuName = "New Monster Stat")]
+[CreateAssetMenu(fileName = "MonsterStat", menuName = "ScriptableObject/Monster")]
 public class MonsterStatSO : ScriptableObject
 {
-    public StatType type;
+    public MonsterType monsterType;
+    public AttackType attackType;
 
     public float hp;//체력
     public float attack;//공격력

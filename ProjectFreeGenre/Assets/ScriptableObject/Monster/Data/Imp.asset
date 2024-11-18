@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bb0d9a3d2e08c428ee2d0755051af8, type: 3}
   m_Name: Imp
   m_EditorClassIdentifier: 
-  type: 0
+  monsterType: 1
+  attackType: 0
   hp: 5
   attack: 1
   attackDelay: 0
