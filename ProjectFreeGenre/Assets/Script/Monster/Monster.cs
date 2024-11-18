@@ -11,7 +11,7 @@ public class Monster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameManager.Instance.Player.gameObject;
+        player = GameManager.Instance.player.gameObject;
         sprite = GetComponent<SpriteRenderer>();
         StatUpdate();
     }

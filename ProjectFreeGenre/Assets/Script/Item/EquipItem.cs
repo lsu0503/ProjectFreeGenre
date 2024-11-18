@@ -15,8 +15,8 @@ public class EquipItem : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = data.animator;
-        attackCollider = GetComponent<Collider>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        attackCollider = GetComponentInChildren<Collider>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = data.sprite;
     }
 
