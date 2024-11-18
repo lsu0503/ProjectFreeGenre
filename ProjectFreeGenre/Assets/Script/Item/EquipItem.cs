@@ -32,12 +32,12 @@ public class EquipItem : MonoBehaviour
 
     }
 
-    private IEnumerator AttackTimeCheck()
-    {
-        yield return null;
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
-        EndUse();
-    }
+    //private IEnumerator AttackTimeCheck()
+    //{
+    //    yield return null;
+    //    yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
+    //    EndUse();
+    //}
 
     private void EndUse()
     {
