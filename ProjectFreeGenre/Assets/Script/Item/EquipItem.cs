@@ -9,13 +9,14 @@ public class EquipItem : MonoBehaviour
     private List<GameObject> hitList = new List<GameObject>();
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-    private Collider attackCollider;
+    //private Collider attackCollider;
+    [SerializeField] private GameObject attackObj;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = data.animator;
-        attackCollider = GetComponentInChildren<Collider>();
+        //attackCollider = GetComponentInChildren<Collider>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = data.sprite;
     }
@@ -46,11 +47,13 @@ public class EquipItem : MonoBehaviour
 
     public void AttackOn()
     {
-        attackCollider.enabled = true;
+        //attackCollider.enabled = true;
+        attackObj.SetActive(true);
     }
 
     public void AttackOff()
     {
-        attackCollider.enabled = false;
+        //attackCollider.enabled = false;
+        attackObj.SetActive(false);
     }
 }
