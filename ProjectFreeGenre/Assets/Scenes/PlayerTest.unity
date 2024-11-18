@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  dashForce: 100
+  dashForce: 8
   dashDuration: 0.2
 --- !u!114 &1609398263
 MonoBehaviour:
