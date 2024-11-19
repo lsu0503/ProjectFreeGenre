@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8735421781387489931}
   m_Layer: 0
-  m_Name: WarAxe
+  m_Name: WarAxe_Equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 2810754944858998954}
   - component: {fileID: 5895481957050306818}
   - component: {fileID: 2046935577799396655}
+  - component: {fileID: 707629920850481971}
   m_Layer: 0
   m_Name: AttackObj
   m_TagString: Untagged
@@ -353,6 +354,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.5, z: 0.2}
   m_Center: {x: 0, y: -0.35, z: 0}
+--- !u!114 &707629920850481971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8870827126832060189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361aae10cca6a9b46b5b9ffaaa267ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8935769357728000547
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +375,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1395076212137325761}
-  - component: {fileID: 482463922161377062}
   m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Untagged
@@ -386,26 +398,3 @@ Transform:
   - {fileID: 5928812470794652934}
   m_Father: {fileID: 3729758706185168081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &482463922161377062
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8935769357728000547}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Height: 0.5
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
