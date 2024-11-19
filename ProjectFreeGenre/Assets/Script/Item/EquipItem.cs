@@ -40,6 +40,10 @@ public class EquipItem : MonoBehaviour
     public IEnumerator DestroyAfterDeactivated()
     {
         yield return new WaitUntil(() => actionItem.gameObject.activeSelf == false);
+
+        if(rotater != null)
+            rotater.RemoveAction();
+
         Destroy(gameObject);
     }
 }

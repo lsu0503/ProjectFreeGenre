@@ -5,6 +5,7 @@ public abstract class EquipRotater : MonoBehaviour
 {
     protected Vector2 frontDir;
     private ActionItem actionItem;
+    private Coroutine routine;
 
     protected virtual void Awake()
     {
@@ -19,7 +20,7 @@ public abstract class EquipRotater : MonoBehaviour
     public void OnDirectionChange(Vector2 direction)
     {
         frontDir = direction;
-        StartCoroutine(ChangeDiredtionAfterDeactivated());
+        routine = StartCoroutine(ChangeDiredtionAfterDeactivated());
     }
 
     protected abstract void ChangeDirection();
@@ -28,5 +29,11 @@ public abstract class EquipRotater : MonoBehaviour
     {
         yield return new WaitUntil(() => actionItem.gameObject.activeSelf == false);
         ChangeDirection();
+    }
+
+    public void RemoveAction()
+    {
+        GameManager.Instance.player.playerMove.OnDirectionChanged -= OnDirectionChange;
+        StopCoroutine(routine);
     }
 }

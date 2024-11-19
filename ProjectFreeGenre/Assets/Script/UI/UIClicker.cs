@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIClicker : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class UIClicker : MonoBehaviour, IPointerClickHandler
 {
     private bool isMouseOn;
 
@@ -15,34 +15,21 @@ public class UIClicker : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         isMouseOn = false;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        isMouseOn = true;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        isMouseOn = false;
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isMouseOn)
+        switch (eventData.button)
         {
-            switch (eventData.button)
-            {
-                case PointerEventData.InputButton.Left:
-                    OnLeftCilickEvent?.Invoke();
-                    break;
+            case PointerEventData.InputButton.Left:
+                OnLeftCilickEvent?.Invoke();
+                break;
 
-                case PointerEventData.InputButton.Middle:
-                    OnMiddleClickEvent?.Invoke();
-                    break;
+            case PointerEventData.InputButton.Middle:
+                OnMiddleClickEvent?.Invoke();
+                break;
 
-                case PointerEventData.InputButton.Right:
-                    OnRightCilickEvent?.Invoke();
-                    break;
-            }
+            case PointerEventData.InputButton.Right:
+                OnRightCilickEvent?.Invoke();
+                break;
         }
     }
 }

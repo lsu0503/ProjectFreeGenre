@@ -1,11 +1,12 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemSlotUI : MonoBehaviour
 {
-    private int index;
+    private ItemSlotListUI itemSlotListUI;
     private ItemSlot slot;
     [SerializeField] private Image backgroundImg;
     [SerializeField] private Image itemIcon;
@@ -26,15 +27,26 @@ public class ItemSlotUI : MonoBehaviour
     }
 
     // 아이템 정보 초기화
-    public void SetUI(ItemSlot slot)
+    public void SetUI(ItemSlot slot, ItemSlotListUI itemSlotListUI)
     {
+        this.itemSlotListUI = itemSlotListUI;
+
         this.slot = slot;
-        index = slot.index;
         slot.OnCooltiomeProgressEvent += CheckCooltime;
         slot.OnActivationChangedEvent += SetActivation;
+        slot.OnDropEvent += RemoveSlot;
 
         itemIcon.sprite = slot.data.sprite;
         itemIcon.SetNativeSize();
+    }
+
+    private void RemoveSlot(int index)
+    {
+        slot.OnCooltiomeProgressEvent -= CheckCooltime;
+        slot.OnActivationChangedEvent -= SetActivation;
+        slot.OnDropEvent -= RemoveSlot;
+
+        Destroy(gameObject);
     }
 
     /* UI 효과 관련 메소드 */
@@ -59,11 +71,13 @@ public class ItemSlotUI : MonoBehaviour
         if (isActivated)
         {
             backgroundImg.color = Color.white;
+            itemIcon.color = Color.white;
         }
 
         else
         {
             backgroundImg.color = Color.gray;
+            itemIcon.color = Color.gray;
         }
     }
 }

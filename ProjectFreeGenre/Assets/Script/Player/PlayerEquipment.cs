@@ -24,6 +24,7 @@ public class PlayerEquipment : MonoBehaviour
 
         ItemSlot slot = new ItemSlot(GameManager.Instance.player, slots.Count, data);
         slots.Add(slot);
+        slot.OnDropEvent += RemoveItem;
         return true;
     }
 
