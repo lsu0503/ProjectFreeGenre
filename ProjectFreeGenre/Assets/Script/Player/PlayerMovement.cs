@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float dashForce = 10f; // Dash 힘
     public float dashDuration = 0.2f; // Dash 지속 시간
-    private Vector2 curMovementInput;
+    public Vector2 curMovementInput;
     private Rigidbody rb;
     private bool isDashing = false;
     private Vector3 dashStartPos;
