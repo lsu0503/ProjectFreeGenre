@@ -189,9 +189,9 @@ GameObject:
   - component: {fileID: 3663386524246770527}
   - component: {fileID: 6798533044647853013}
   - component: {fileID: 3034277632628695305}
-  - component: {fileID: 3287606750990567774}
   - component: {fileID: 2959324194737117137}
   - component: {fileID: 685458883307325708}
+  - component: {fileID: 3287606750990567774}
   - component: {fileID: 2064498123574050808}
   m_Layer: 7
   m_Name: Monster_UnderTaker
@@ -289,20 +289,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3287606750990567774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042186928689211598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e30a4b0648996c4fb0f7425811b23e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statSO: {fileID: 11400000, guid: bae8e915cef0c724ca681769b3a156e3, type: 2}
-  bullet: {fileID: 3330635353176634104, guid: fd5769959bf57124894156617b7b990e, type: 3}
 --- !u!54 &2959324194737117137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -351,6 +337,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2307693, y: 1.4071187, z: 0.2}
   m_Center: {x: 0, y: -0.18105608, z: 0}
+--- !u!114 &3287606750990567774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042186928689211598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e30a4b0648996c4fb0f7425811b23e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statSO: {fileID: 11400000, guid: bae8e915cef0c724ca681769b3a156e3, type: 2}
+  hpSystem: {fileID: 2064498123574050808}
+  hpTmp: 0
+  bullet: {fileID: 3330635353176634104, guid: fd5769959bf57124894156617b7b990e, type: 3}
 --- !u!114 &2064498123574050808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7d722e40670b24ca08e9f8ea62535f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpBar: {fileID: 2175864085109312302}
 --- !u!1 &1077238311296281767
 GameObject:
   m_ObjectHideFlags: 0

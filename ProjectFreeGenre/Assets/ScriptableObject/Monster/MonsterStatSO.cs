@@ -25,6 +25,6 @@ public class MonsterStatSO : ScriptableObject
     public float attackDelay;//공격딜레이
     public float speed;//이동속도
     public float knockBackPower;//넉백파워
-    public float knockBackTime;//넉백지속시간
+    public float knockBackResistance;//넉백저항력
     public float distance;//공격사거리
 }

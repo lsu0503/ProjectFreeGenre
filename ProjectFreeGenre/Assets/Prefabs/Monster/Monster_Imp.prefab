@@ -100,9 +100,10 @@ GameObject:
   - component: {fileID: 1945361682566951091}
   - component: {fileID: 8174462955954017873}
   - component: {fileID: 8044706440963073549}
-  - component: {fileID: 1014195490397898656}
   - component: {fileID: 1677269733313926722}
   - component: {fileID: 5734416759111178048}
+  - component: {fileID: 1014195490397898656}
+  - component: {fileID: 6300488889602508722}
   m_Layer: 7
   m_Name: Monster_Imp
   m_TagString: Untagged
@@ -199,19 +200,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1014195490397898656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732485848213677051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd2f4dc0abae99d469277413e8c3e29e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statSO: {fileID: 11400000, guid: c68a1a705c39b7346b53510eba9d8af7, type: 2}
 --- !u!65 &1677269733313926722
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -260,6 +248,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1014195490397898656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732485848213677051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2f4dc0abae99d469277413e8c3e29e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statSO: {fileID: 11400000, guid: c68a1a705c39b7346b53510eba9d8af7, type: 2}
+  hpSystem: {fileID: 6300488889602508722}
+  hpTmp: 0
+--- !u!114 &6300488889602508722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732485848213677051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7d722e40670b24ca08e9f8ea62535f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpBar: {fileID: 5478597241957917332}
 --- !u!1 &4336871059168556794
 GameObject:
   m_ObjectHideFlags: 0
