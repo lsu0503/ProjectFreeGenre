@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EquipItem : MonoBehaviour
@@ -19,8 +20,10 @@ public class EquipItem : MonoBehaviour
         switch (data.targetType)
         {
             case TARGETTYPE.FLIP:
+                transform.parent.AddComponent<EquipFlip>();
                 break;
             case TARGETTYPE.DIRECTION:
+                transform.parent.AddComponent<EquipDirection>();
                 break;
             case TARGETTYPE.AIM:
                 break;
@@ -33,12 +36,6 @@ public class EquipItem : MonoBehaviour
         spriteRenderer.sprite = data.sprite;
         attackComponent.SetData(data);
         attackObj.SetActive(false);
-    }
-
-    public void OnUse()
-    {
-        gameObject.SetActive(true);
-
     }
 
     private void EndUse()

@@ -6,6 +6,7 @@ public class ItemSlot
     // Player 클래스가 없는 상태로 작업해서, Player 클래스 관련 항목은 주석 처리 하였습니다.
 
     private Player player;
+    private PlayerEquipment equipment;
     public int index;
     private ItemData data;
     private GameObject WeaponObj;
@@ -18,28 +19,25 @@ public class ItemSlot
     public ItemSlot(Player player, int index, ItemData data)
     {
         this.player = player;
+        this.equipment = player.equipment;
         this.index = index;
         this.data = data;
+
+        equipment.TimeProgressCheckEvent += CheckCooltime;
+
         WeaponObj = GameObject.Instantiate(ItemDataManager.Instance.Dict.dict[data.id].equipItem, player.transform);
         WeaponObj.SetActive(false);
         CooltimeRemain = data.attackRate;
         isActivated = true;
     }
 
-    public bool CheckCooltime(float time)
+    public void CheckCooltime(float time)
     {
-        if (CooltimeRemain <= 0.0f)
-            return true;
-
         CooltimeRemain -= time;
         OnCooltiomeProgressEvent?.Invoke(CooltimeRemain / data.attackRate);
 
-
-        if (CooltimeRemain <= 0.0f)
-            return true;
-
-        else
-            return false;
+        if (CooltimeRemain <= 0.0f && isActivated)
+            UseItem();
     }
 
     public void UseItem()
