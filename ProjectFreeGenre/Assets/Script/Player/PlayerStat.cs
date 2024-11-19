@@ -21,6 +21,6 @@ public class PlayerStat : MonoBehaviour, IDamage
         CurrentHp -= damage;
         if (CurrentHp < 0) CurrentHp = 0;
         Debug.Log("피격 데미지: " + CurrentHp);
-        //UIManager를 통해 HP UIBar에 현재 체력 업데이트
+        UIManager.Instance.UpdateHpBar(CurrentHp, MaxHp);
     }
 }
