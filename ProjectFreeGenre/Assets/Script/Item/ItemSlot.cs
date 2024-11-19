@@ -1,10 +1,9 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 public class ItemSlot
 {
-    // Player 클래스가 없는 상태로 작업해서, Player 클래스 관련 항목은 주석 처리 하였습니다.
-
     private Player player;
     private PlayerEquipment equipment;
     public int index;
@@ -24,11 +23,19 @@ public class ItemSlot
         this.data = data;
 
         equipment.TimeProgressCheckEvent += CheckCooltime;
+        equipment.EquipmentRemoveEvent += ReduceIndex;
 
         WeaponObj = GameObject.Instantiate(ItemDataManager.Instance.Dict.dict[data.id].equipItem, player.transform);
         WeaponObj.SetActive(false);
         CooltimeRemain = data.attackRate;
         isActivated = true;
+    }
+
+    private void ReduceIndex(int targetIndex)
+    {
+        if (targetIndex > index) return;
+
+        index--;
     }
 
     public void CheckCooltime(float time)
@@ -54,6 +61,11 @@ public class ItemSlot
 
     public void DropItem()
     {
+        equipment.EquipmentRemoveEvent -= ReduceIndex;
+        equipment.TimeProgressCheckEvent -= CheckCooltime;
 
+        WeaponObj.GetComponent<EquipItem>().Unequiped();
+        GameObject dropItem = ItemDataManager.Instance.GetDict_Drop(data.id);
+        dropItem.transform.position = player.transform.position;
     }
 }

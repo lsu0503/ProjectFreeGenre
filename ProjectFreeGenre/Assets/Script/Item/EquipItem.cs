@@ -53,4 +53,15 @@ public class EquipItem : MonoBehaviour
     {
         attackObj.SetActive(false);
     }
+
+    public void Unequiped()
+    {
+        StartCoroutine(DestroyAfterDeactivated());
+    }
+
+    public IEnumerator DestroyAfterDeactivated()
+    {
+        yield return new WaitUntil(() => gameObject.activeSelf == false);
+        Destroy(gameObject);
+    }
 }
