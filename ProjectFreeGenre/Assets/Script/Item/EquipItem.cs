@@ -6,52 +6,30 @@ using UnityEngine;
 public class EquipItem : MonoBehaviour
 {
     [SerializeField] private ItemData data;
-    private Animator animator;
-    private SpriteRenderer spriteRenderer;
-    [SerializeField] private GameObject attackObj;
-    private ItemAttack attackComponent;
+    
+    private EquipRotater rotater;
+    private ActionItem actionItem;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        attackComponent = attackObj.GetComponent<ItemAttack>();
+        actionItem = GetComponentInChildren<ActionItem>();
 
         switch (data.targetType)
         {
             case TARGETTYPE.FLIP:
-                transform.parent.AddComponent<EquipFlip>();
+                rotater = gameObject.AddComponent<EquipFlip>();
                 break;
             case TARGETTYPE.DIRECTION:
-                transform.parent.AddComponent<EquipDirection>();
+                rotater = gameObject.AddComponent<EquipDirection>();
                 break;
             case TARGETTYPE.AIM:
                 break;
         }
     }
 
-    private void Start()
+    public void UseItem()
     {
-        animator.runtimeAnimatorController = data.animator;
-        spriteRenderer.sprite = data.sprite;
-        attackComponent.SetData(data);
-        attackObj.SetActive(false);
-    }
-
-    private void EndUse()
-    {
-        attackComponent.ClearHitData();
-        gameObject.SetActive(false);
-    }
-
-    public void AttackOn()
-    {
-        attackObj.SetActive(true);
-    }
-
-    public void AttackOff()
-    {
-        attackObj.SetActive(false);
+        actionItem.StartUse();
     }
 
     public void Unequiped()
@@ -61,7 +39,7 @@ public class EquipItem : MonoBehaviour
 
     public IEnumerator DestroyAfterDeactivated()
     {
-        yield return new WaitUntil(() => gameObject.activeSelf == false);
+        yield return new WaitUntil(() => actionItem.gameObject.activeSelf == false);
         Destroy(gameObject);
     }
 }

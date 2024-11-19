@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4082653085965750537}
+  - component: {fileID: 7449582742068937946}
   m_Layer: 0
   m_Name: Katana_Equip
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   - {fileID: 1998727289975734726}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7449582742068937946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610691592866119887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7332626e5afae024f9491391865be400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 08356e4cd44258842a9f90eb783968e8, type: 2}
 --- !u!1 &1489627312127385116
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1998727289975734726}
   - component: {fileID: 446896841730990562}
-  - component: {fileID: 3630398550773604228}
+  - component: {fileID: 7275550443725663764}
   m_Layer: 0
   m_Name: AttackOrigin
   m_TagString: Untagged
@@ -239,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 1621058600587038221}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.5, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 1, y: 0.95, z: 0}
+  m_LocalPosition: {x: 1, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -267,7 +281,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3630398550773604228
+--- !u!114 &7275550443725663764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,7 +290,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1621058600587038221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7332626e5afae024f9491391865be400, type: 3}
+  m_Script: {fileID: 11500000, guid: 698c7e9a223813246b6f998dc94376b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 08356e4cd44258842a9f90eb783968e8, type: 2}

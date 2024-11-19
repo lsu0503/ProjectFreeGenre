@@ -1,8 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public abstract class EquipRotater : MonoBehaviour
 {
     protected Vector2 frontDir;
+    private ActionItem actionItem;
+
+    protected virtual void Awake()
+    {
+        actionItem = GetComponentInChildren<ActionItem>();
+    }
 
     protected virtual void Start()
     {
@@ -12,8 +19,14 @@ public abstract class EquipRotater : MonoBehaviour
     public void OnDirectionChange(Vector2 direction)
     {
         frontDir = direction;
-        ChangeDirection();
+        StartCoroutine(ChangeDiredtionAfterDeactivated());
     }
 
     protected abstract void ChangeDirection();
+
+    public IEnumerator ChangeDiredtionAfterDeactivated()
+    {
+        yield return new WaitUntil(() => actionItem.gameObject.activeSelf == false);
+        ChangeDirection();
+    }
 }

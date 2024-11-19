@@ -221,6 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2229940641815451363}
+  - component: {fileID: 6819996663564260269}
   m_Layer: 0
   m_Name: Spear_Equip
   m_TagString: Untagged
@@ -244,6 +245,19 @@ Transform:
   - {fileID: 8332391473384743868}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6819996663564260269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3780322844535340501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7332626e5afae024f9491391865be400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 68dae6b20cd28984e95ae5f313922dee, type: 2}
 --- !u!1 &6050283139295091357
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8332391473384743868}
   - component: {fileID: 1972397235135743800}
-  - component: {fileID: 3148089718704262818}
+  - component: {fileID: 2243747086542864210}
   m_Layer: 0
   m_Name: AttackOrigin
   m_TagString: Untagged
@@ -356,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 8525364564771277548}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7933534, z: 0, w: 0.6087614}
-  m_LocalPosition: {x: -2, y: 0.95, z: 0.5}
+  m_LocalPosition: {x: -2, y: 0.45, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -384,7 +398,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3148089718704262818
+--- !u!114 &2243747086542864210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -393,7 +407,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8525364564771277548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7332626e5afae024f9491391865be400, type: 3}
+  m_Script: {fileID: 11500000, guid: 698c7e9a223813246b6f998dc94376b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 68dae6b20cd28984e95ae5f313922dee, type: 2}

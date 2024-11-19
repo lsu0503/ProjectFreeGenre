@@ -8,7 +8,7 @@ public interface IDictionaryContent
 
 public class ContentDictionary<T> where T : IDictionaryContent
 {
-    public Dictionary<int, T> dict;
+    public Dictionary<int, T> dict = new Dictionary<int, T>();
 
     public T GetDict(int key)
     {

@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
-    private IInteractable curInteractable;
+    [SerializeField] private IInteractable curInteractable;
     [SerializeField] private LayerMask targetLayers;
 
     private void OnTriggerEnter(Collider other)
@@ -15,16 +15,41 @@ public class Interaction : MonoBehaviour
 
             if (targetIntaractable == null) return;
             if (ReferenceEquals(curInteractable, targetIntaractable)) return;
+            if(curInteractable != null)
+            {
+                curInteractable.UnsetInterActionTarget();
+            }
 
+            targetIntaractable.SetInterActionTarget();
             curInteractable = targetIntaractable;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (curInteractable == null) return;
+
+        if((targetLayers & (1 << other.gameObject.layer)) != 0)
+        {
+            IInteractable targetIntaractable = other.gameObject.GetComponent<IInteractable>();
+
+            if (targetIntaractable == null) return;
+            if (!ReferenceEquals(curInteractable, targetIntaractable)) return;
+
+            curInteractable.UnsetInterActionTarget();
+            curInteractable = null;
         }
     }
 
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if(context.phase == InputActionPhase.Performed)
         {
-            curInteractable.OnInteraction();
+            if (curInteractable != null)
+            {
+                curInteractable.OnInteraction();
+                curInteractable = null;
+            }
         }
     }
 }

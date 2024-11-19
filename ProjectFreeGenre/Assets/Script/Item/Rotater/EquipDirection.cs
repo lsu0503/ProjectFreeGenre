@@ -6,8 +6,8 @@ public class EquipDirection : EquipRotater
     {
         if(frontDir.magnitude >= ConstantCollection.attackDirectionThreashold)
         {
-            Vector3 dir = transform.forward * frontDir.y + transform.right * frontDir.x;
-            transform.rotation = Quaternion.Euler(dir);
+            float angle = Mathf.Atan2(-frontDir.y, frontDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
         }
     }
 }

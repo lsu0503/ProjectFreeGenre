@@ -9,6 +9,7 @@ public class ItemSlot
     public int index;
     public ItemData data { get; private set; }
     private GameObject WeaponObj;
+    private EquipItem equipItem;
     public float CooltimeRemain;
     public bool isActivated { get; private set; }
 
@@ -21,14 +22,15 @@ public class ItemSlot
         this.equipment = player.equipment;
         this.index = index;
         this.data = data;
-
+        
         equipment.TimeProgressCheckEvent += CheckCooltime;
         equipment.EquipmentRemoveEvent += ReduceIndex;
 
         WeaponObj = GameObject.Instantiate(ItemDataManager.Instance.Dict.dict[data.id].equipItem, player.transform);
-        WeaponObj.SetActive(false);
         CooltimeRemain = data.attackRate;
         isActivated = true;
+
+        equipItem = WeaponObj.GetComponent<EquipItem>();
     }
 
     private void ReduceIndex(int targetIndex)
@@ -50,7 +52,7 @@ public class ItemSlot
     public void UseItem()
     {
         CooltimeRemain = data.attackRate;
-        WeaponObj.SetActive(true);
+        equipItem.UseItem();
     }
 
     public void ChangeActivation(bool isActivated)
