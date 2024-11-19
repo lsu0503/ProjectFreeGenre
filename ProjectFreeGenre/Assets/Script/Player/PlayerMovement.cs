@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 dashEndPos;
     private float dashTime;
 
-    public event Action<Vector3> OnDirectionChanged; // 진행 방향 이벤트
+    public event Action<Vector2> OnDirectionChanged; // 진행 방향 이벤트
 
     private void Awake()
     {
