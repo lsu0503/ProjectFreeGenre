@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 dashEndPos;
     private float dashTime;
 
+    public event Action<Vector3> OnDirectionChanged; // 진행 방향 이벤트
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Dash();
-        }
+        }        
     }
 
     void Move()
@@ -47,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             curMovementInput = context.ReadValue<Vector2>();
+            OnDirectionChanged?.Invoke(curMovementInput);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
@@ -69,10 +73,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
-        dashTime += Time.fixedDeltaTime / dashDuration;
+        dashTime += Time.fixedDeltaTime;
         transform.position = Vector3.Lerp(dashStartPos, dashEndPos, dashTime);
 
-        if (dashTime >= 1)
+        if (dashTime >= dashDuration)
         {
             isDashing = false;
         }

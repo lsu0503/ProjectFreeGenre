@@ -1,59 +1,49 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EquipItem : MonoBehaviour
 {
     [SerializeField] private ItemData data;
-    private List<GameObject> hitList = new List<GameObject>();
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-    //private Collider attackCollider;
     [SerializeField] private GameObject attackObj;
+    private ItemAttack attackComponent;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        animator.runtimeAnimatorController = data.animator;
-        //attackCollider = GetComponentInChildren<Collider>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        spriteRenderer.sprite = data.sprite;
+        attackComponent = attackObj.GetComponent<ItemAttack>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        // 캐릭터(플레이어 & 몬스터)의 피격 함수 받아서 작성.
+        animator.runtimeAnimatorController = data.animator;
+        spriteRenderer.sprite = data.sprite;
+        attackComponent.SetData(data);
+        attackObj.SetActive(false);
     }
 
     public void OnUse()
     {
         gameObject.SetActive(true);
-        animator.SetTrigger("Activate");
 
     }
 
-    //private IEnumerator AttackTimeCheck()
-    //{
-    //    yield return null;
-    //    yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
-    //    EndUse();
-    //}
-
     private void EndUse()
     {
+        attackComponent.ClearHitData();
         gameObject.SetActive(false);
     }
 
     public void AttackOn()
     {
-        //attackCollider.enabled = true;
         attackObj.SetActive(true);
     }
 
     public void AttackOff()
     {
-        //attackCollider.enabled = false;
         attackObj.SetActive(false);
     }
 }

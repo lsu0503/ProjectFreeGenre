@@ -4,17 +4,17 @@ using UnityEngine.UI;
 public class DropItem : MonoBehaviour
 {
     public int id { get; }
-    public ItemData data { get; private set; }
-    private Image image;
+    public ItemData data;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
-        image = GetComponentInChildren<Image>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
     {
-        image.sprite = data.sprite;
+        spriteRenderer.sprite = data.sprite;
     }
 
     public void OnInteraction()
