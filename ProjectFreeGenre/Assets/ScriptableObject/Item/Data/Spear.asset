@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   damage: 40
-  knockbackPower: 0
+  knockbackPower: 40
   attackRate: 2
   sprite: {fileID: 21300000, guid: a9f5fc1d4e9a1f84881bf0a28d0b4a77, type: 3}
   animator: {fileID: 22100000, guid: 00905e3a952418144844d64a465017d7, type: 2}
