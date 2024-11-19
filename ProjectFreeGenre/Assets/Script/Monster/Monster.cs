@@ -6,17 +6,23 @@ public abstract class Monster : MonoBehaviour
 {
     public MonsterStatSO statSO;
     private SpriteRenderer sprite;
-    private MonsterHpSystem hpSystem;
+
+    public MonsterHpSystem hpSystem;
+    public float hpTmp;
+
     protected GameObject player;
-    protected Rigidbody rb;
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     protected void Start()
     {
         player = GameManager.Instance.player.gameObject;
         sprite = GetComponent<SpriteRenderer>();
-        hpSystem = GetComponent<MonsterHpSystem>();
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable()
+    {
         StatUpdate();
     }
 
@@ -38,5 +44,18 @@ public abstract class Monster : MonoBehaviour
     void StatUpdate()
     {
         //TODO :: 시간에 지남에 따라 체력과 공격력이 증가해야됨
+        //
+        hpTmp = statSO.hp;
+        hpSystem.HpUpdate();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        IKnockback knockbackObject = collision.gameObject.GetComponent<IKnockback>();
+        if (knockbackObject != null)
+        {
+            Vector3 direction = collision.gameObject.transform.position - transform.position;
+            knockbackObject.ApplyKnockback(direction, statSO.knockBackPower);
+        }
     }
 }

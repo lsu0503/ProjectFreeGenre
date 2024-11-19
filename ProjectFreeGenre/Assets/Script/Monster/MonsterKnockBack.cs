@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterKnockBack : CharacterKnockBack
+public class MonsterKnockBack : MonoBehaviour, IKnockback
 {
-    public Vector3 direction;
+    private Monster monster;
 
-    protected override void KnockBack(Collision collision)
+    void Awake()
     {
-        if (collision.gameObject.layer == 6)
-        {
-            direction = (transform.position - collision.transform.position).normalized;
+        monster = GetComponent<Monster>();
+    }
 
-            rigidbody.velocity = Vector3.zero;
-            //TODO :: 넉백 저항력
-            rigidbody.AddForce(direction * 30, ForceMode.Impulse);
-        }
+    public void ApplyKnockback(Vector3 direction, float force)
+    {
+        float adjustedForce = force / monster.statSO.knockBackResistance;
+
+        // Rigidbody에 힘을 가하여 넉백 적용
+        monster.rb.AddForce(direction.normalized * adjustedForce, ForceMode.Impulse);
     }
 }
