@@ -29,7 +29,7 @@ public class PlayerEquipment : MonoBehaviour
 
     public void RemoveItem(int index)
     {
-        slots.RemoveAt(index);
         EquipmentRemoveEvent?.Invoke(index);
+        slots.RemoveAt(index);
     }
 }
