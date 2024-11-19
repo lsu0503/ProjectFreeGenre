@@ -6,6 +6,7 @@ public abstract class Monster : MonoBehaviour
 {
     public MonsterStatSO statSO;
     private SpriteRenderer sprite;
+    private MonsterHpSystem hpSystem;
     protected GameObject player;
     protected Rigidbody rb;
 
@@ -14,6 +15,7 @@ public abstract class Monster : MonoBehaviour
     {
         player = GameManager.Instance.player.gameObject;
         sprite = GetComponent<SpriteRenderer>();
+        hpSystem = GetComponent<MonsterHpSystem>();
         rb = GetComponent<Rigidbody>();
         StatUpdate();
     }
@@ -22,10 +24,11 @@ public abstract class Monster : MonoBehaviour
     void FixedUpdate()
     {
         Flip();
-        Move();
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Move(direction);
     }
 
-    protected abstract void Move();
+    protected abstract void Move(Vector3 direction);
 
     void Flip()
     {

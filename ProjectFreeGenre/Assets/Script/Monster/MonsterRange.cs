@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterLong : Monster
+public class MonsterRange : Monster
 {
     public GameObject bullet;
     private float attackDelayTmp;
@@ -13,14 +13,13 @@ public class MonsterLong : Monster
         base.Start();
         attackDelayTmp = statSO.attackDelay;
     }
-    protected override void Move()
+    protected override void Move(Vector3 direction)
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
 
         if (distance > statSO.distance)
         {
-            Vector3 direction = (player.transform.position - transform.position).normalized;
             Vector3 targetVelocity = direction * statSO.speed;
             rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime);
         }
@@ -49,7 +48,6 @@ public class MonsterLong : Monster
     {
         GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
         MonsterBullet monsterBullet = bulletInstance.GetComponent<MonsterBullet>();
-
         monsterBullet.attack = statSO.attackBullet;
         monsterBullet.direction = (player.transform.position - transform.position).normalized;
     }

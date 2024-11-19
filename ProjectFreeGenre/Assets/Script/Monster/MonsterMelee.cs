@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterShort : Monster
+public class MonsterMelee : Monster
 {
-    protected override void Move()
+    protected override void Move(Vector3 direction)
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
         if (distance > statSO.distance)
         {
-            Vector3 direction = (player.transform.position - transform.position).normalized;
             Vector3 targetVelocity = direction * statSO.speed;
             rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime);
         }
