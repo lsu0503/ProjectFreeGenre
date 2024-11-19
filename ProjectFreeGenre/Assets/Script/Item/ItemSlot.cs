@@ -8,7 +8,7 @@ public class ItemSlot
     private Player player;
     private PlayerEquipment equipment;
     public int index;
-    private ItemData data;
+    public ItemData data { get; private set; }
     private GameObject WeaponObj;
     public float CooltimeRemain;
     public bool isActivated { get; private set; }
@@ -46,15 +46,14 @@ public class ItemSlot
         WeaponObj.SetActive(true);
     }
 
-    public void ActivateSkill()
+    public void ChangeActivation(bool isActivated)
     {
-        isActivated = true;
-        OnActivationChangedEvent?.Invoke(true);
+        this.isActivated = isActivated;
+        OnActivationChangedEvent?.Invoke(isActivated);
     }
 
-    public void DeactivateSkill()
+    public void DropItem()
     {
-        isActivated = false;
-        OnActivationChangedEvent?.Invoke(false);
+
     }
 }
