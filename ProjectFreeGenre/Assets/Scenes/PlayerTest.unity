@@ -413,8 +413,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  dashForce: 8
-  dashDuration: 0.2
+  dashForce: 30
+  dashDuration: 0.35
+  curMovementInput: {x: 0, y: 0}
 --- !u!114 &1609398263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,6 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMove: {fileID: 1609398262}
+  equipment: {fileID: 0}
 --- !u!1 &2130410309
 GameObject:
   m_ObjectHideFlags: 0
