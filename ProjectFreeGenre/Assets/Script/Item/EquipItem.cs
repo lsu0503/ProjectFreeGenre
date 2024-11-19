@@ -15,6 +15,16 @@ public class EquipItem : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         attackComponent = attackObj.GetComponent<ItemAttack>();
+
+        switch (data.targetType)
+        {
+            case TARGETTYPE.FLIP:
+                break;
+            case TARGETTYPE.DIRECTION:
+                break;
+            case TARGETTYPE.AIM:
+                break;
+        }
     }
 
     private void Start()
