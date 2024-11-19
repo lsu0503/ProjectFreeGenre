@@ -14,6 +14,7 @@ public class ItemData : ScriptableObject
 {
     public int id;
     public int damage;
+    public int knockbackPower;
     public int attackRate;
     public Sprite sprite;
     public AnimatorOverrideController animator;
