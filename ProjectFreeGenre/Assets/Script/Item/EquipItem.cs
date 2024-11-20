@@ -23,6 +23,7 @@ public class EquipItem : MonoBehaviour
                 rotater = gameObject.AddComponent<EquipDirection>();
                 break;
             case TARGETTYPE.AIM:
+                rotater = gameObject.AddComponent<EquipAimming>();
                 break;
         }
     }
