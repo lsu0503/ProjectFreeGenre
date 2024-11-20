@@ -9,7 +9,7 @@ public class PlayerCondition : MonoBehaviour
     public float startValue;
     public float maxValue;
     public float passiveValue;
-    public Image uiBar;
+    public Image Bar;
 
 
     void Start()
@@ -19,7 +19,7 @@ public class PlayerCondition : MonoBehaviour
 
     void Update()
     {
-        uiBar.fillAmount = GetPercentage();
+        Bar.fillAmount = GetPercentage();
     }
 
     float GetPercentage()
