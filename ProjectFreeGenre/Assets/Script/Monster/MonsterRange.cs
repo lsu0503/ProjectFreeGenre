@@ -20,11 +20,13 @@ public class MonsterRange : Monster
 
         if (distance > statSO.distance)
         {
+            animator.SetBool("IsRun", true);
             Vector3 targetVelocity = direction * statSO.speed;
             rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime);
         }
         else
         {
+            animator.SetBool("IsRun", false);
             // 공격 범위 내에 있을 때 속도를 0으로 설정
             rb.velocity = Vector3.zero;
             AttackDelay();

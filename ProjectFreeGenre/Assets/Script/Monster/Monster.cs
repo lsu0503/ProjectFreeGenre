@@ -6,6 +6,7 @@ public abstract class Monster : MonoBehaviour
 {
     public MonsterStatSO statSO;
     private SpriteRenderer sprite;
+    protected Animator animator;
 
     public MonsterHpSystem hpSystem;
 
@@ -17,6 +18,7 @@ public abstract class Monster : MonoBehaviour
     {
         player = GameManager.Instance.player.gameObject;
         sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 

@@ -10,6 +10,7 @@ public class MonsterMelee : Monster
 
         if (distance > statSO.distance)
         {
+            animator.SetBool("IsRun", true);
             Vector3 targetVelocity = direction * statSO.speed;
             rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime);
         }
