@@ -3,8 +3,8 @@
 public class SoundManager : Singleton<SoundManager>
 {
     private AudioSource audioSource;
-    private float soundEffectVolume;
-    private float musicVolume;
+    public float musicVolume { get; private set; }
+    public float soundEffectVolume { get; private set; }
 
     protected override void Awake()
     {
@@ -16,8 +16,8 @@ public class SoundManager : Singleton<SoundManager>
 
     private void Start()
     {
-        soundEffectVolume = PlayerPrefs.GetFloat(ConstantCollection.soundEffectVolumeString, 1.0f);
         musicVolume = PlayerPrefs.GetFloat(ConstantCollection.musicVolumeString, 1.0f);
+        soundEffectVolume = PlayerPrefs.GetFloat(ConstantCollection.soundEffectVolumeString, 1.0f);
     }
 
     public void ChangeBGM(AudioClip clip)
@@ -35,17 +35,16 @@ public class SoundManager : Singleton<SoundManager>
         return tempObj;
     }
 
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        audioSource.volume = volume;
+        PlayerPrefs.SetFloat(ConstantCollection.musicVolumeString, volume);
+    }
+
     public void SetSoundEffectVolume(float volume)
     {
         soundEffectVolume = volume;
         PlayerPrefs.SetFloat(ConstantCollection.soundEffectVolumeString, volume);
-        PlayerPrefs.Save();
-    }
-
-    public void SetMusicVolume(float volume)
-    {
-        musicVolume = volume;
-        PlayerPrefs.SetFloat(ConstantCollection.musicVolumeString, volume);
-        PlayerPrefs.Save();
     }
 }

@@ -40,10 +40,4 @@ public class SceneSettler : MonoBehaviour
             }
         }
     }
-
-    private void OnDestroy()
-    {
-        GameManager.Instance.player = null;
-        GameManager.Instance.monsters.Clear();
-    }
 }

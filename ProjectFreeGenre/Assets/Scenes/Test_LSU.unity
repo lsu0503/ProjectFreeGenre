@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d1b51a4abcfc842a531722d90923de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 1c64bd3a6ecc5c4409e8aa874c7315bf, type: 3}
+  clip: {fileID: 0}
   cells:
   - CanvasName: EquipmentUI
     uiArray:
@@ -609,6 +609,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster_Imp
       objectReference: {fileID: 0}
+    - target: {fileID: 1732485848213677051, guid: e8e7cf24a94b8b64aafc79843c2db4e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1945361682566951091, guid: e8e7cf24a94b8b64aafc79843c2db4e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -662,12 +667,12 @@ PrefabInstance:
     - target: {fileID: 4200786447765853573, guid: e8e7cf24a94b8b64aafc79843c2db4e5,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4200786447765853573, guid: e8e7cf24a94b8b64aafc79843c2db4e5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
