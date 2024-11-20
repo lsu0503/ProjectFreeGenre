@@ -50,7 +50,7 @@ public class MonsterRange : Monster
     {
         GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
         MonsterBullet monsterBullet = bulletInstance.GetComponent<MonsterBullet>();
-        monsterBullet.attack = statSO.attackBullet;
+        monsterBullet.attack = attackBullet;
         monsterBullet.direction = (player.transform.position - transform.position).normalized;
     }
 }

@@ -5,19 +5,13 @@ using UnityEngine.UI;
 
 public class MonsterHpSystem : MonoBehaviour, IDamage
 {
-    private Monster monster;
+    public Monster monster;
     public Slider hpBar;
     public float hpTmp;
 
-    private void Awake()
-    {
-        hpBar = GetComponentInChildren<Slider>();
-        monster = GetComponent<Monster>();
-    }
-
     void OnEnable()
     {
-        hpTmp = monster.statSO.hp;
+        hpTmp = monster.hp;
     }
 
     public void Attacked(float damage)
@@ -40,7 +34,7 @@ public class MonsterHpSystem : MonoBehaviour, IDamage
 
     public void HpUpdate()
     {
-        hpBar.value = hpTmp / monster.statSO.hp;
+        hpBar.value = hpTmp / monster.hp;
         if (hpBar.value < 1 && hpBar.value > 0)
             hpBar.gameObject.SetActive(true);
         else
