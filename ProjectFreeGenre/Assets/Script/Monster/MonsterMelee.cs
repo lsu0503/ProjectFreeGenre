@@ -12,7 +12,7 @@ public class MonsterMelee : Monster
         {
             animator.SetBool("IsRun", true);
             Vector3 targetVelocity = direction * statSO.speed;
-            rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime);
+            rb.velocity = targetVelocity;
         }
     }
 }

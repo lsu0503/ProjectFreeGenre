@@ -41,6 +41,9 @@ public class EquipAimming : EquipRotater
 
         List<GameObject> monsters = GameManager.Instance.monsters;
 
+        if (monsters.Count <= 0)
+            return;
+
         foreach (GameObject monster in monsters)
         {
             DistanceVector = monster.transform.position - transform.position;

@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7d722e40670b24ca08e9f8ea62535f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monster: {fileID: 3287606750990567774}
   hpBar: {fileID: 2175864085109312302}
   hpTmp: 0
 --- !u!114 &2131240829200255245

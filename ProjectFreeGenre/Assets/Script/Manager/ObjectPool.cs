@@ -17,37 +17,10 @@ public class ObjectPool : MonoBehaviour
     public List<ObectPoolMonster> objectPools;
     public Dictionary<string, Queue<GameObject>> objectPoolsDictionary;
 
-    [SerializeField] private float time;
-    [SerializeField] private float timeTmp;
-
     private void Awake()
     {
+        GameManager.Instance.objectPool = this;
         ObjectInit();
-        timeTmp = time;
-    }
-
-    private void Update()
-    {
-        if(timeTmp > 0)
-        {
-            timeTmp -= Time.deltaTime;
-        }
-        else
-        {
-            MonsterRespawn();
-            timeTmp = time;
-        }
-
-    }
-
-    public void MonsterRespawn()
-    {
-        int monster_Ran = Random.Range(0, 3);
-
-        if (monster_Ran < 1)
-            SpawnFromObjectPool("Imp");
-        else
-            SpawnFromObjectPool("UnderTaker");
     }
 
     private void ObjectInit()
@@ -73,6 +46,7 @@ public class ObjectPool : MonoBehaviour
 
         GameObject obj = objectPoolsDictionary[tag].Dequeue();
         objectPoolsDictionary[tag].Enqueue(obj);
+        GameManager.Instance.monsterGeneric.StatUpdate(obj);
         obj.SetActive(true);
 
         GameManager.Instance.monsters.Add(obj);
