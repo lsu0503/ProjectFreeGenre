@@ -17,11 +17,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 dashEndPos;
     private float dashTime;
 
+    private Animator animator;
     public event Action<Vector2> OnDirectionChanged; // 진행 방향 이벤트
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void FixedUpdate()
@@ -33,7 +35,18 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Dash();
-        }        
+        }
+
+        animator.SetBool("isMoving", curMovementInput != Vector2.zero);
+
+        if (curMovementInput.x < 0) 
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (curMovementInput.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     void Move()
