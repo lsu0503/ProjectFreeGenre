@@ -43,5 +43,6 @@ public class ActionItem : MonoBehaviour
     public void AttackOff()
     {
         attackObj.SetActive(false);
+        attackComponent.ClearHitData();
     }
 }

@@ -19,3 +19,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 7368bb078824b744b8d9eabbfc4f3f1d, type: 3}
   animator: {fileID: 22100000, guid: fe8d12ad82a91df4f8ba3af9ad32aceb, type: 2}
   targetType: 0
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  clip: {fileID: 0}
