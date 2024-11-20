@@ -32,6 +32,7 @@ public class MonsterBullet : MonoBehaviour
             {
                 damageable.Attacked(attack);
             }
+            DestroyBullet();
         }
     }
 }

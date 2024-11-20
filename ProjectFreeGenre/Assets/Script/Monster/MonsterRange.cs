@@ -22,7 +22,7 @@ public class MonsterRange : Monster
         {
             animator.SetBool("IsRun", true);
             Vector3 targetVelocity = direction * statSO.speed;
-            rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, Time.deltaTime);
+            rb.velocity = targetVelocity;
         }
         else
         {
@@ -48,7 +48,7 @@ public class MonsterRange : Monster
 
     void Attack()
     {
-        GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(30f, 0f, 0f));
         MonsterBullet monsterBullet = bulletInstance.GetComponent<MonsterBullet>();
         monsterBullet.attack = attackBullet;
         monsterBullet.direction = (player.transform.position - transform.position).normalized;

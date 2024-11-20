@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06bb0d9a3d2e08c428ee2d0755051af8, type: 3}
-  m_Name: Imp
+  m_Name: Mimic
   m_EditorClassIdentifier: 
   monsterType: 1
   attackType: 0
-  hp: 100
-  attackBody: 10
+  hp: 80
+  attackBody: 5
   attackBullet: 0
   attackDelay: 0
-  speed: 5
-  knockBackPower: 5
-  knockBackResistance: 3
+  speed: 8
+  knockBackPower: 0
+  knockBackResistance: 0
   distance: 0
