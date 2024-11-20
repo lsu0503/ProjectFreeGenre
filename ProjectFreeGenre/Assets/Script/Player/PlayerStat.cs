@@ -1,26 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStat : MonoBehaviour, IDamage
 {
-    public float MaxHp { get; set; }
+    public PlayerUI playerUI;
+
+    public event Action onTakeDamage;
+
+    PlayerCondition health { get { return playerUI.health; } }
     public float CurrentHp { get; set; }
     public int Speed { get; set; }
     public int AttackPower { get; set; }
     public int AttackDelay { get; set; }
 
-    private void Awake()
+
+
+    public void Heal(float amount)
     {
-        MaxHp = 100;
-        CurrentHp = MaxHp;
+        health.Add(amount);
     }
 
     public void Attacked(float damage)
     {
-        CurrentHp -= damage;
-        if (CurrentHp < 0) CurrentHp = 0;
-        Debug.Log("피격 데미지: " + CurrentHp);
-        UIManager.Instance.UpdateHpBar(CurrentHp, MaxHp);
+        health.Subtract(damage);
+        onTakeDamage?.Invoke();
     }
+
 }
