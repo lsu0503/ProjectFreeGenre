@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EquipFlip : EquipRotater
+public class EquipFlip : EquipRotaterByMovement
 {
     protected override void ChangeDirection()
     {

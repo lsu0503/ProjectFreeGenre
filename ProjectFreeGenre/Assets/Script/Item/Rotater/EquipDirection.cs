@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EquipDirection : EquipRotater
+public class EquipDirection : EquipRotaterByMovement
 {
     protected override void ChangeDirection()
     {
