@@ -51,12 +51,21 @@ public abstract class Monster : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        IKnockback knockbackObject = collision.gameObject.GetComponent<IKnockback>();
-        
-        if (knockbackObject != null)
+        if (collision.gameObject.layer == 6)
         {
-            Vector3 direction = collision.gameObject.transform.position - transform.position;
-            knockbackObject.ApplyKnockback(direction, statSO.knockBackPower);
+            IDamage damageable = collision.gameObject.GetComponent<IDamage>();
+            if (damageable != null)
+            {
+                damageable.Attacked(statSO.attackBody);
+            }
+
+            IKnockback knockbackObject = collision.gameObject.GetComponent<IKnockback>();
+
+            if (knockbackObject != null)
+            {
+                Vector3 direction = collision.gameObject.transform.position - transform.position;
+                knockbackObject.ApplyKnockback(direction, statSO.knockBackPower);
+            }
         }
     }
 }
