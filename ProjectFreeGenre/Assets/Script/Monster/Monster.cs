@@ -52,6 +52,7 @@ public abstract class Monster : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         IKnockback knockbackObject = collision.gameObject.GetComponent<IKnockback>();
+        
         if (knockbackObject != null)
         {
             Vector3 direction = collision.gameObject.transform.position - transform.position;

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerStat : MonoBehaviour, IDamage
 {
-    public int MaxHp { get; set; }
-    public int CurrentHp { get; set; }
+    public float MaxHp { get; set; }
+    public float CurrentHp { get; set; }
     public int Speed { get; set; }
     public int AttackPower { get; set; }
     public int AttackDelay { get; set; }
@@ -16,7 +16,7 @@ public class PlayerStat : MonoBehaviour, IDamage
         CurrentHp = MaxHp;
     }
 
-    public void Attacked(int damage)
+    public void Attacked(float damage)
     {
         CurrentHp -= damage;
         if (CurrentHp < 0) CurrentHp = 0;

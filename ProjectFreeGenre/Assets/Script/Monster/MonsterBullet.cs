@@ -22,4 +22,16 @@ public class MonsterBullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            IDamage damageable = collision.gameObject.GetComponent<IDamage>();
+            if (damageable != null)
+            {
+                damageable.Attacked(attack);
+            }
+        }
+    }
 }

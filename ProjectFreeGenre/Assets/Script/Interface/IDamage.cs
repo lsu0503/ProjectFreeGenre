@@ -1,4 +1,4 @@
 public interface IDamage
 {
-    void Attacked(int damage);
+    void Attacked(float damage);
 }
