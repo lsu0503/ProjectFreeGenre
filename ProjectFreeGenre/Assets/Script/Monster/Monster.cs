@@ -17,15 +17,15 @@ public abstract class Monster : MonoBehaviour
     protected void Start()
     {
         player = GameManager.Instance.player.gameObject;
-        sprite = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         StatUpdate();
-    }
+    }*/
 
     // Update is called once per frame
     void FixedUpdate()
@@ -59,14 +59,13 @@ public abstract class Monster : MonoBehaviour
             {
                 damageable.Attacked(statSO.attackBody);
             }
+        }
+        IKnockback knockbackObject = collision.gameObject.GetComponent<IKnockback>();
 
-            IKnockback knockbackObject = collision.gameObject.GetComponent<IKnockback>();
-
-            if (knockbackObject != null)
-            {
-                Vector3 direction = collision.gameObject.transform.position - transform.position;
-                knockbackObject.ApplyKnockback(direction, statSO.knockBackPower);
-            }
+        if (knockbackObject != null)
+        {
+            Vector3 direction = collision.gameObject.transform.position - transform.position;
+            knockbackObject.ApplyKnockback(direction, statSO.knockBackPower);
         }
     }
 }

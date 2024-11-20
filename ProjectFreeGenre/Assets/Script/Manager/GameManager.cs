@@ -11,4 +11,7 @@ public class GameManager : Singleton<GameManager>
         get { return _player; }
         set { _player = value; }
     }
+
+    public List<GameObject> monsters = new List<GameObject>();
+
 }

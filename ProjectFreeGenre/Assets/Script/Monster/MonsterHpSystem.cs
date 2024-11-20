@@ -33,6 +33,8 @@ public class MonsterHpSystem : MonoBehaviour, IDamage
     private void Die()
     {
         Debug.Log("적 사망");
+        GameManager.Instance.monsters.Remove(gameObject);
+        gameObject.SetActive(false);
         // 여기에 사망 처리 로직 추가
     }
 
