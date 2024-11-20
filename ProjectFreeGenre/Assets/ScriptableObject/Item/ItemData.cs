@@ -19,4 +19,5 @@ public class ItemData : ScriptableObject
     public Sprite sprite;
     public AnimatorOverrideController animator;
     public TARGETTYPE targetType;
+    public AudioClip clip;
 }
