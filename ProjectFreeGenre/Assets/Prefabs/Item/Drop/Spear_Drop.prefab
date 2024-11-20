@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1426929057997952780}
   - component: {fileID: 3463965943129587390}
-  - component: {fileID: 3922228370274252866}
+  - component: {fileID: 519506756297952105}
   m_Layer: 8
   m_Name: Spear_Drop
   m_TagString: Untagged
@@ -50,8 +50,8 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 68dae6b20cd28984e95ae5f313922dee, type: 2}
   fullSlotAlertUI: {fileID: 507744962616209645}
   InteractionDisplay: {fileID: 3710980560675119701}
---- !u!65 &3922228370274252866
-BoxCollider:
+--- !u!136 &519506756297952105
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -68,8 +68,10 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &507744962616209645
 GameObject:
@@ -88,7 +90,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1650652875755871804
 RectTransform:
   m_ObjectHideFlags: 0
@@ -223,7 +225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1197286285347402922
 RectTransform:
   m_ObjectHideFlags: 0

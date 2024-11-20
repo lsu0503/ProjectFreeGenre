@@ -1,27 +1,30 @@
-﻿using Unity.VisualScripting;
+﻿using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField] private IInteractable curInteractable;
+    private IInteractable curInteractable;
     [SerializeField] private LayerMask targetLayers;
+    private bool isNotCheckAfterInteraction;
+
+    private void Start()
+    {
+        isNotCheckAfterInteraction = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if((targetLayers & (1 << other.gameObject.layer)) != 0)
+        CheckAround(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (isNotCheckAfterInteraction)
         {
-            IInteractable targetIntaractable = other.gameObject.GetComponent<IInteractable>();
-
-            if (targetIntaractable == null) return;
-            if (ReferenceEquals(curInteractable, targetIntaractable)) return;
-            if(curInteractable != null)
-            {
-                curInteractable.UnsetInterActionTarget();
-            }
-
-            targetIntaractable.SetInterActionTarget();
-            curInteractable = targetIntaractable;
+            CheckAround(other);
+            isNotCheckAfterInteraction = false;
         }
     }
 
@@ -38,6 +41,26 @@ public class Interaction : MonoBehaviour
 
             curInteractable.UnsetInterActionTarget();
             curInteractable = null;
+
+            isNotCheckAfterInteraction = true;
+        }
+    }
+
+    private void CheckAround(Collider other)
+    {
+        if ((targetLayers & (1 << other.gameObject.layer)) != 0)
+        {
+            IInteractable targetIntaractable = other.gameObject.GetComponent<IInteractable>();
+
+            if (targetIntaractable == null) return;
+            if (ReferenceEquals(curInteractable, targetIntaractable)) return;
+            if (curInteractable != null)
+            {
+                curInteractable.UnsetInterActionTarget();
+            }
+
+            targetIntaractable.SetInterActionTarget();
+            curInteractable = targetIntaractable;
         }
     }
 
@@ -49,6 +72,8 @@ public class Interaction : MonoBehaviour
             {
                 curInteractable.OnInteraction();
                 curInteractable = null;
+
+                isNotCheckAfterInteraction = true;
             }
         }
     }

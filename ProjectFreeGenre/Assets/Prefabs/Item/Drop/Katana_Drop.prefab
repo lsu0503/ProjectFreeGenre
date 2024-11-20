@@ -113,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054404291058539320}
   - component: {fileID: 8034638146974438713}
-  - component: {fileID: 7262584502000406504}
+  - component: {fileID: 3973993840888321614}
   m_Layer: 8
   m_Name: Katana_Drop
   m_TagString: Untagged
@@ -153,8 +153,8 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 08356e4cd44258842a9f90eb783968e8, type: 2}
   fullSlotAlertUI: {fileID: 2735147749361554784}
   InteractionDisplay: {fileID: 2290271693921532818}
---- !u!65 &7262584502000406504
-BoxCollider:
+--- !u!136 &3973993840888321614
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -171,8 +171,10 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2290271693921532818
 GameObject:
@@ -191,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1416602393516187210
 RectTransform:
   m_ObjectHideFlags: 0
@@ -326,7 +328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7978425739564100138
 RectTransform:
   m_ObjectHideFlags: 0

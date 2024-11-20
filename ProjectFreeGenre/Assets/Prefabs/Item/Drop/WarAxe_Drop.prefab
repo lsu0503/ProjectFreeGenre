@@ -113,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8715526452352503027}
   - component: {fileID: 2729465487202698782}
-  - component: {fileID: 4983478969431102738}
+  - component: {fileID: 2160234588339097972}
   m_Layer: 8
   m_Name: WarAxe_Drop
   m_TagString: Untagged
@@ -153,8 +153,8 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: c2877c4eee187924a94599f421d5b7a2, type: 2}
   fullSlotAlertUI: {fileID: 5354646591855095176}
   InteractionDisplay: {fileID: 5754153462788435406}
---- !u!65 &4983478969431102738
-BoxCollider:
+--- !u!136 &2160234588339097972
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -171,8 +171,10 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5354646591855095176
 GameObject:
@@ -191,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4174319602043699829
 RectTransform:
   m_ObjectHideFlags: 0
@@ -326,7 +328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1745814233824347533
 RectTransform:
   m_ObjectHideFlags: 0
