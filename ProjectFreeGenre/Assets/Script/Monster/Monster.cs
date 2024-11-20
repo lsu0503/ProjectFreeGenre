@@ -8,7 +8,6 @@ public abstract class Monster : MonoBehaviour
     private SpriteRenderer sprite;
 
     public MonsterHpSystem hpSystem;
-    public float hpTmp;
 
     protected GameObject player;
     public Rigidbody rb;
@@ -45,7 +44,7 @@ public abstract class Monster : MonoBehaviour
     {
         //TODO :: 시간에 지남에 따라 체력과 공격력이 증가해야됨
         //
-        hpTmp = statSO.hp;
+        
         hpSystem.HpUpdate();
     }
 
