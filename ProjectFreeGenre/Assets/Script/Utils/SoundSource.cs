@@ -18,7 +18,7 @@ public class SoundSource : MonoBehaviour
         audioSource.Play();
         audioSource.pitch = 1.0f + Random.Range(-pitchVariance, pitchVariance);
 
-        DestroyAfterClipPlay(clip.length);
+        StartCoroutine(DestroyAfterClipPlay(clip.length));
     }
 
     private IEnumerator DestroyAfterClipPlay(float time)

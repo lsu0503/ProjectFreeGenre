@@ -5,4 +5,7 @@
 
     public const float soundEffectPitchVariance = 0.2f;
     public const float itemAimingDirectionCheckRate = 0.1f;
+
+    public const string soundEffectVolumeString = "soundEffectVolume";
+    public const string musicVolumeString = "musicVolume";
 }

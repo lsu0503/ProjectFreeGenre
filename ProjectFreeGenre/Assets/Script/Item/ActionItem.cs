@@ -42,6 +42,12 @@ public class ActionItem : MonoBehaviour
 
     public void AttackOn()
     {
+        if (data.clip != null)
+        {
+            GameObject SoundObj = SoundManager.Instance.PlayClip(data.clip);
+            SoundObj.transform.position = transform.position;
+        }
+
         attackObj.SetActive(true);
     }
 
