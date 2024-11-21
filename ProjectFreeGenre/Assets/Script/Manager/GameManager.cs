@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,14 +17,49 @@ public class GameManager : Singleton<GameManager>
     public MonsterGenerator monsterGenerator;
     public List<GameObject> monsters = new List<GameObject>();
 
-    public SceneDestructor sceneDestructor;
+    public SceneController sceneController;
+    public event Action OnGameOverEvent;
+    public event Action OnGameClearEvent;
+    public event Action OnSceneExitEvent;
+
+    public float currentTIme;
+
+    private void Start()
+    {
+        currentTIme = 0.0f;
+    }
+
+    private void FixedUpdate()
+    {
+        currentTIme += Time.deltaTime;
+    }
 
     public void GameOver()
     {
-
+        OnGameOverEvent?.Invoke();
     }
+
     public void GameClear()
     {
+        OnGameClearEvent?.Invoke();
+    }
 
+    public void CallOnSceneExit()
+    {
+        OnSceneExitEvent?.Invoke();
+    }
+
+    public void ClearManager()
+    {
+        _player = null;
+        objectPool = null;
+        monsterGenerator = null;
+        monsters.Clear();
+        sceneController = null;
+
+        OnGameClearEvent = null;
+        OnSceneExitEvent = null;
+        OnSceneExitEvent = null;
+        currentTIme = 0.0f;
     }
 }

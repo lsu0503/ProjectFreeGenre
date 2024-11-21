@@ -31,14 +31,13 @@ public class PauseMenuUI : MonoBehaviour
 
     public void RetryButton()
     {
-        
+        GameManager.Instance.CallOnSceneExit();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-}
 
-public class SceneDestructor : MonoBehaviour
-{
-    private void Start()
+    public void TitleButton()
     {
-        GameManager.Instance.sceneDestructor = this;
+        GameManager.Instance.CallOnSceneExit();
+        SceneManager.LoadScene("TitleScene");
     }
 }
