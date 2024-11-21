@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private MonsterStatSO statSO;
+    public MonsterStatSO statSO;
     public PlayerMovement playerMove;
     public PlayerEquipment equipment;
     public Interaction interaction;
