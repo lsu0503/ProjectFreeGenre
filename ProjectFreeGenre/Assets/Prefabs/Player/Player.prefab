@@ -5173,6 +5173,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6bcf3b88-dde5-4e77-b64b-5d317c53bd13
     m_ActionName: Player/Interaction[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8e030fe4-a9e6-4b92-972a-5e52011cbfe1
+    m_ActionName: Player/Menu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -5209,6 +5213,7 @@ MonoBehaviour:
   moveSpeed: 10
   dashForce: 20
   dashDuration: 0.35
+  dashEnergy: 30
   curMovementInput: {x: 0, y: 0}
 --- !u!114 &8985964180161447489
 MonoBehaviour:
