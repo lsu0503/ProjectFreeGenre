@@ -201,8 +201,9 @@ GameObject:
   m_Component:
   - component: {fileID: 494038933}
   - component: {fileID: 494038932}
+  - component: {fileID: 494038934}
   m_Layer: 0
-  m_Name: SceneSettler
+  m_Name: SceneObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,6 +226,11 @@ MonoBehaviour:
   - CanvasName: EquipmentUI
     uiArray:
     - {fileID: 2299902031928414927, guid: cd0f625d402d7a543be03e22aa04f108, type: 3}
+  - CanvasName: PauseUI
+    uiArray:
+    - {fileID: 4244305052724068907, guid: a0373976a26e40d4799405bd737d0566, type: 3}
+    - {fileID: 7205420667699678798, guid: 1ca33b729804a2943ba72828a4bf831f, type: 3}
+    - {fileID: 6875890691804338905, guid: ee36d5229ce2354419a66a34146eeb95, type: 3}
   objects:
   - targetObject: {fileID: 3053929165473727105, guid: 28dd14f6de1ae024798f1b7bcbfae4dd,
       type: 3}
@@ -250,6 +256,18 @@ MonoBehaviour:
   - targetObject: {fileID: 8518089555384397300, guid: 6d67e96ca0534f84fa989c39c6fcb461,
       type: 3}
     position: {x: 0, y: 0, z: 0}
+  - targetObject: {fileID: 7446051054300139996, guid: 44d53f504ec6f4548939cfda4d6a42b1,
+      type: 3}
+    position: {x: -10, y: 0, z: -10}
+  - targetObject: {fileID: 1732485848213677051, guid: e8e7cf24a94b8b64aafc79843c2db4e5,
+      type: 3}
+    position: {x: 10, y: 0, z: -10}
+  - targetObject: {fileID: 7039026068467102515, guid: 94a731085aa17ff4491f7e3a5e3021f8,
+      type: 3}
+    position: {x: 10, y: 0, z: 10}
+  - targetObject: {fileID: 1042186928689211598, guid: 45c5bcf2c0feabd489a6cc917c8b3328,
+      type: 3}
+    position: {x: -10, y: 0, z: 10}
 --- !u!4 &494038933
 Transform:
   m_ObjectHideFlags: 0
@@ -265,6 +283,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &494038934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494038931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1784e633bd5d4abebec4df6326787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverUI: {fileID: 0}
+  gameClearUI: {fileID: 0}
 --- !u!1 &527134021
 GameObject:
   m_ObjectHideFlags: 0

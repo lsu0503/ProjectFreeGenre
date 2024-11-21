@@ -19,6 +19,6 @@ MonoBehaviour:
   attackBullet: 0
   attackDelay: 0
   speed: 5
-  knockBackPower: 10
-  knockBackResistance: 2
+  knockBackPower: 6
+  knockBackResistance: 5
   distance: 0

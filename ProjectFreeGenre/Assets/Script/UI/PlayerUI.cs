@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerUI : MonoBehaviour
 {
     public PlayerCondition health;
+    public PlayerCondition stamina;
 
     private void Start()
     {

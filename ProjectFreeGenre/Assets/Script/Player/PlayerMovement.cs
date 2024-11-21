@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-    public float dashForce = 10f; // Dash 힘
-    public float dashDuration = 0.2f; // Dash 지속 시간
+    public float dashForce; // Dash 힘
+    public float dashDuration; // Dash 지속 시간
+    public float dashEnergy; // Dash 시 소모되는 스태미나
     public Vector2 curMovementInput;
     private Rigidbody rb;
     private bool isDashing = false;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer; // SpriteRenderer 참조
     private ParticleSystem runParticles; // Run 상태의 ParticleSystem
     private ParticleSystem dashParticles; // Dash 상태의 ParticleSystem
+    private PlayerStat playerStat; // PlayerStat 참조
     public event Action<Vector2> OnDirectionChanged; // 진행 방향 이벤트
 
     private void Awake()
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // 자식 오브젝트의 SpriteRenderer 가져오기
+        playerStat = GetComponent<PlayerStat>(); // PlayerStat 컴포넌트 가져오기
 
         // 자식 오브젝트에서 특정 이름을 가진 파티클 시스템 가져오기
         foreach (Transform child in transform)
@@ -35,10 +38,12 @@ public class PlayerMovement : MonoBehaviour
             if (child.name == "Run")
             {
                 runParticles = child.GetComponent<ParticleSystem>();
+                runParticles.Stop(); // 씬 시작 시 Run 파티클 정지
             }
             else if (child.name == "Dash")
             {
                 dashParticles = child.GetComponent<ParticleSystem>();
+                dashParticles.Stop(); // 씬 시작 시 Dash 파티클 정지
             }
         }
     }
@@ -48,10 +53,14 @@ public class PlayerMovement : MonoBehaviour
         if (!isDashing)
         {
             Move();
+            runParticles.Play();
+            dashParticles.Stop();
         }
         else
         {
             Dash();
+            dashParticles.Play();
+            runParticles.Stop();
         }
 
         animator.SetBool("isMoving", curMovementInput != Vector2.zero);
@@ -60,31 +69,14 @@ public class PlayerMovement : MonoBehaviour
         if (curMovementInput.x < 0)
         {
             spriteRenderer.flipX = true; // 왼쪽으로 이동 시 반전
-            runParticles.transform.rotation = Quaternion.Euler(0, 180, 0); // Run 파티클 시스템 회전
-            dashParticles.transform.rotation = Quaternion.Euler(0, 180, 0); // Dash 파티클 시스템 회전
+            runParticles.transform.localScale = new Vector3(-1, 1, 1); // Run 파티클 시스템 반전
+            dashParticles.transform.localScale = new Vector3(-1, 1, 1); // Dash 파티클 시스템 반전
         }
         else if (curMovementInput.x > 0)
         {
             spriteRenderer.flipX = false; // 오른쪽으로 이동 시 원래 방향
-            runParticles.transform.rotation = Quaternion.Euler(0, 0, 0); // Run 파티클 시스템 회전
-            dashParticles.transform.rotation = Quaternion.Euler(0, 0, 0); // Dash 파티클 시스템 회전
-        }
-
-        // 이동 상태에 따라 파티클 시스템 제어
-        if (curMovementInput != Vector2.zero && !isDashing)
-        {
-            if (!runParticles.isPlaying)
-            {
-                runParticles.Play(); // 이동 중일 때 Run 파티클 재생
-            }
-            if (dashParticles.isPlaying)
-            {
-                dashParticles.Stop(); // Dash 파티클 정지
-            }
-        }
-        else if (curMovementInput == Vector2.zero && runParticles.isPlaying)
-        {
-            runParticles.Stop(); // 멈출 때 Run 파티클 정지
+            runParticles.transform.localScale = new Vector3(1, 1, 1); // Run 파티클 시스템 원래 방향
+            dashParticles.transform.localScale = new Vector3(1, 1, 1); // Dash 파티클 시스템 원래 방향
         }
     }
 
@@ -114,21 +106,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed && !isDashing)
         {
-            Vector2 dashDirection2D = curMovementInput.normalized;
-            Vector3 dashDirection = new Vector3(dashDirection2D.x, 0, dashDirection2D.y);
-            dashStartPos = transform.position;
-            dashEndPos = transform.position + dashDirection * dashForce;
-            dashTime = 0;
-            isDashing = true;
+            // 스태미나가 충분한지 확인
+            if (playerStat.playerUI.stamina.curValue >= dashEnergy)
+            {
+                Vector2 dashDirection2D = curMovementInput.normalized;
+                Vector3 dashDirection = new Vector3(dashDirection2D.x, 0, dashDirection2D.y);
+                dashStartPos = transform.position;
+                dashEndPos = transform.position + dashDirection * dashForce;
+                dashTime = 0;
+                isDashing = true;
 
-            // Dash 상태의 파티클 재생
-            if (!dashParticles.isPlaying)
-            {
-                dashParticles.Play();
-            }
-            if (runParticles.isPlaying)
-            {
-                runParticles.Stop(); // Run 파티클 정지
+                // Dash 시 Sprint 메서드 호출하여 스태미나 감소
+                playerStat.Sprint(dashEnergy);
             }
         }
     }
