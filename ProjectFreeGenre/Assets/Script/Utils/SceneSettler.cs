@@ -53,5 +53,7 @@ public class SceneSettler : MonoBehaviour
         {
             Instantiate(cell.targetObject, position: cell.position, Quaternion.identity);
         }
+
+        Destroy(gameObject);
     }
 }
