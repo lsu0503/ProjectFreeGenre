@@ -13,7 +13,6 @@ public class PlayerStat : MonoBehaviour, IDamage, IDashable
 
     PlayerCondition stamina { get { return playerUI.stamina; } }
 
-    public float CurrentHp { get; set; }
     public int Speed { get; set; }
     public int AttackPower { get; set; }
     public int AttackDelay { get; set; }
