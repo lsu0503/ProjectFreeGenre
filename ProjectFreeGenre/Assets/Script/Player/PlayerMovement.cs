@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,11 +13,11 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration; // Dash 지속 시간
     public float dashEnergy; // Dash 시 소모되는 스태미나
     public Vector2 curMovementInput;
+    public float inputThreashold;
     private Rigidbody rb;
     private bool isDashing = false;
-    private Vector3 dashStartPos;
-    private Vector3 dashEndPos;
-    private float dashTime;
+
+    public bool isOnKnockback;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer; // SpriteRenderer 참조
@@ -48,20 +49,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        isOnKnockback = false;
+    }
+
     void FixedUpdate()
     {
         if (!isDashing)
-        {
             Move();
-            runParticles.Play();
-            dashParticles.Stop();
-        }
-        else
-        {
-            Dash();
-            dashParticles.Play();
-            runParticles.Stop();
-        }
 
         animator.SetBool("isMoving", curMovementInput != Vector2.zero);
 
@@ -82,7 +78,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+        if (isOnKnockback) return;
+
+        Vector3 dir = new Vector3(curMovementInput.x, 0.0f, curMovementInput.y);
         dir *= moveSpeed;
         dir.y = rb.velocity.y;
 
@@ -91,19 +89,42 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (isOnKnockback)
+        {
+            curMovementInput = Vector2.zero;
+            runParticles.Stop();
+
+            return;
+        }
+
         if (context.phase == InputActionPhase.Performed)
         {
-            curMovementInput = context.ReadValue<Vector2>();
-            OnDirectionChanged?.Invoke(curMovementInput);
+            Vector2 inputVector = context.ReadValue<Vector2>();
+
+            if (inputVector.magnitude > inputThreashold)
+            {
+                runParticles.Play();
+                curMovementInput = inputVector;
+                OnDirectionChanged?.Invoke(curMovementInput);
+            }
+
+            else
+            {
+                curMovementInput = Vector2.zero;
+                runParticles.Stop();
+            }
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             curMovementInput = Vector2.zero;
+            runParticles.Stop();
         }
     }
 
     public void OnDash(InputAction.CallbackContext context)
     {
+        if(isOnKnockback) return;
+
         if (context.phase == InputActionPhase.Performed && !isDashing)
         {
             // 스태미나가 충분한지 확인
@@ -111,25 +132,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 Vector2 dashDirection2D = curMovementInput.normalized;
                 Vector3 dashDirection = new Vector3(dashDirection2D.x, 0, dashDirection2D.y);
-                dashStartPos = transform.position;
-                dashEndPos = transform.position + dashDirection * dashForce;
-                dashTime = 0;
-                isDashing = true;
-
+                
                 // Dash 시 Sprint 메서드 호출하여 스태미나 감소
                 playerStat.Sprint(dashEnergy);
+
+                StartCoroutine(Dash(dashDirection));
             }
         }
     }
 
-    void Dash()
+    private IEnumerator Dash(Vector3 dashDirection)
     {
-        dashTime += Time.fixedDeltaTime;
-        transform.position = Vector3.Lerp(dashStartPos, dashEndPos, dashTime);
+        isDashing = true;
+        dashParticles.Play();
+        rb.velocity = dashDirection * dashForce;
 
-        if (dashTime >= dashDuration)
-        {
-            isDashing = false;
-        }
+        yield return new WaitForSeconds(dashDuration);
+        dashParticles.Stop();
+        isDashing = false;
     }
 }

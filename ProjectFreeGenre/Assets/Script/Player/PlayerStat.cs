@@ -7,7 +7,7 @@ public class PlayerStat : MonoBehaviour, IDamage, IDashable
 {
     public PlayerUI playerUI;
 
-    public event Action onTakeDamage;
+    public event Action OnTakeDamageEvent;
 
     PlayerCondition health { get { return playerUI.health; } }
     PlayerCondition stamina { get { return playerUI.stamina; } }
@@ -16,7 +16,8 @@ public class PlayerStat : MonoBehaviour, IDamage, IDashable
 
     void Update()
     {
-        stamina.Add(stamina.passiveValue * Time.deltaTime * 2);
+        health.Add(health.passiveValue * Time.deltaTime);
+        stamina.Add(stamina.passiveValue * Time.deltaTime);
         if (health.curValue == 0f)
         {
             Die();
@@ -30,6 +31,7 @@ public class PlayerStat : MonoBehaviour, IDamage, IDashable
 
     public void Die()
     {
+        GameManager.Instance.player.knockback.StopRoutine();
         GameManager.Instance.GameOver();
     }
 
@@ -41,6 +43,6 @@ public class PlayerStat : MonoBehaviour, IDamage, IDashable
     public void Attacked(float damage)
     {
         health.Subtract(damage);
-        onTakeDamage?.Invoke();
+        OnTakeDamageEvent?.Invoke();
     }
 }

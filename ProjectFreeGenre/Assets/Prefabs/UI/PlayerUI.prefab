@@ -92,8 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curValue: 0
   startValue: 100
-  maxValue: 200
-  passiveValue: 1
+  maxValue: 100
+  passiveValue: 5
   Bar: {fileID: 9158492827621729683}
 --- !u!1 &2879818612714606755
 GameObject:

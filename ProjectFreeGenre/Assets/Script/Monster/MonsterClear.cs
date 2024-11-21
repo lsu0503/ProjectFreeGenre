@@ -8,11 +8,11 @@ public class MonsterClear : MonoBehaviour
 
     private void Start()
     {
-        hpSystem.OnDie += StageClear;
+        hpSystem.OnDieEvent += StageClear;
     }
 
     private void StageClear()
     {
-        GameManager.Instance.GameOver();
+        GameManager.Instance.GameClear();
     }
 }

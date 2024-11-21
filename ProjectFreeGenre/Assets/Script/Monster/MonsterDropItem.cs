@@ -9,7 +9,7 @@ public class MonsterDropItem : MonoBehaviour
 
     private void Start()
     {
-        hpSystem.OnDie += DropItem;
+        hpSystem.OnDieEvent += DropItem;
     }
 
     private void DropItem()

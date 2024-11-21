@@ -5,10 +5,11 @@ using UnityEngine;
 public class MonsterKnockBack : MonoBehaviour, IKnockback
 {
     private Monster monster;
+    private Coroutine routine;
 
-    void Awake()
+    public void SetMonster(Monster monster)
     {
-        monster = GetComponent<Monster>();
+        this.monster = monster;
     }
 
     public void ApplyKnockback(Vector3 direction, float force)
@@ -17,5 +18,24 @@ public class MonsterKnockBack : MonoBehaviour, IKnockback
 
         // Rigidbody¿¡ ÈûÀ» °¡ÇÏ¿© ³Ë¹é Àû¿ë
         monster.rb.AddForce(direction.normalized * adjustedForce, ForceMode.Impulse);
+
+        if(routine != null) 
+            StopCoroutine(routine);
+
+        routine = StartCoroutine(KnockBackRecover());
+    }
+
+    public IEnumerator KnockBackRecover()
+    {
+        monster.isOnKnockback = true;
+        yield return new WaitForSeconds(ConstantCollection.knockbackTime);
+        monster.isOnKnockback = false;
+    }
+
+    public void StopRoutine()
+    {
+        StopAllCoroutines();
+        monster.isOnKnockback = false;
+        
     }
 }

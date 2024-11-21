@@ -15,10 +15,10 @@ MonoBehaviour:
   monsterType: 0
   attackType: 0
   hp: 500
-  attackBody: 50
+  attackBody: 20
   attackBullet: 0
   attackDelay: 0
-  speed: 5
+  speed: 1.5
   knockBackPower: 6
   knockBackResistance: 5
   distance: 0

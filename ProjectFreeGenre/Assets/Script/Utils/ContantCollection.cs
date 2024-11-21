@@ -8,4 +8,6 @@
 
     public const string soundEffectVolumeString = "soundEffectVolume";
     public const string musicVolumeString = "musicVolume";
+
+    public const float knockbackTime = 0.2f;
 }

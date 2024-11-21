@@ -3,14 +3,24 @@ using UnityEngine;
 
 public class BlockController : MonoBehaviour
 {
-    public Transform player; // 플레이어 Transform
-    public List<GameObject> platforms = new List<GameObject>(); // 모든 땅(블록) 배열
-    public float platformWidth = 10f; // 각 블록의 너비
+    private Transform player; // 플레이어 Transform
+    [SerializeField] private List<GameObject> platforms = new List<GameObject>(); // 모든 땅(블록) 배열
+    [SerializeField] private float platformWidth = 10f; // 각 블록의 너비
 
     public int currentIndex = -1; // 현재 땅의 인덱스
     private int previousIndex = -1; // 이전 땅의 인덱스
 
     private GameObject prevBlock;
+
+    private void Start()
+    {
+        player = GameManager.Instance.player.gameObject.transform;
+
+        foreach(GameObject block in platforms)
+        {
+            block.GetComponent<Block>().SetBlockContainer(this);
+        }
+    }
 
     public void OnPlayerEnterBlock(Block block)
     {

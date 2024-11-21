@@ -6,6 +6,7 @@ public class MonsterMelee : Monster
 {
     protected override void Move(Vector3 direction)
     {
+        if (isOnKnockback) return;
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
         if (distance > statSO.distance)

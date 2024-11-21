@@ -8,6 +8,7 @@ public class MonsterRange : Monster
     public GameObject bullet;
     private float attackDelayTmp;
     [SerializeField] private AudioClip clip;
+    [SerializeField] private GameObject firePoint;
 
     private void Start()
     {
@@ -16,6 +17,8 @@ public class MonsterRange : Monster
     }
     protected override void Move(Vector3 direction)
     {
+        if (isOnKnockback) return;
+
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
 
@@ -54,9 +57,13 @@ public class MonsterRange : Monster
             GameObject soundObj = SoundManager.Instance.PlayClip(clip);
             soundObj.transform.position = transform.position;
         }
-        GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(30f, 0f, 0f));
+        GameObject bulletInstance = Instantiate(bullet, firePoint.transform.position, Quaternion.identity);
         MonsterBullet monsterBullet = bulletInstance.GetComponent<MonsterBullet>();
         monsterBullet.attack = attackBullet;
-        monsterBullet.direction = (player.transform.position - transform.position).normalized;
+
+        Vector3 playerProjection = new Vector3(player.transform.position.x, 0.0f, player.transform.position.z);
+        Vector3 selfProjection = new Vector3(transform.position.x, 0.0f, transform.position.z);
+
+        monsterBullet.direction = (playerProjection - selfProjection).normalized;
     }
 }
