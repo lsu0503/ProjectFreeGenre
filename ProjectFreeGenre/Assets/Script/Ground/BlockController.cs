@@ -10,28 +10,27 @@ public class BlockController : MonoBehaviour
     public int currentIndex = -1; // 현재 땅의 인덱스
     private int previousIndex = -1; // 이전 땅의 인덱스
 
+    private GameObject prevBlock;
+
     public void OnPlayerEnterBlock(Block block)
     {
         // 현재 블록의 인덱스 가져오기
         int newIndex = GetPlatformIndex(block.gameObject);
+        int previousIndex = GetPlatformIndex(prevBlock);
 
-  
         // 이전 블록의 인덱스보다 작은 경우 1번 블록을 오른쪽으로 이동 [이동 + 배열에서 블록을 빼서 반대편으로 넣기 + 전체 블록의 index 변화 적용이 필요]
         if (previousIndex != -1 && newIndex < previousIndex)
         {
-            Debug.Log("왼쪽 이동");
             MoveBlockToStart(platforms.Count - 1);
         }
         // 이전 블록의 인덱스보다 작은 경우 1번 블록을 오른쪽으로 이동 [이동 + 배열에서 블록을 빼서 반대편으로 넣기 + 전체 블록의 index 변화 적용이 필요]
         else if (previousIndex != -1 && newIndex > previousIndex)
         {
-            Debug.Log("오른쪽 이동");
             MoveBlockToEnd(0);
         }
 
         // 인덱스 업데이트
-        previousIndex = currentIndex;
-        currentIndex = newIndex;
+        prevBlock = block.gameObject;
     }
 
     // 블록을 리스트의 맨 뒤로 이동하는 함수
