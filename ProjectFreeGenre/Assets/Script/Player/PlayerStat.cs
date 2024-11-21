@@ -15,7 +15,17 @@ public class PlayerStat : MonoBehaviour, IDamage
     public int AttackPower { get; set; }
     public int AttackDelay { get; set; }
 
-
+    void Update()
+    {
+        if (health.curValue == 0f)
+        {
+            Die();
+        }
+    }
+    public void Die()
+    {
+        Debug.Log("ав╬З╢ы!");
+    }
 
     public void Heal(float amount)
     {
