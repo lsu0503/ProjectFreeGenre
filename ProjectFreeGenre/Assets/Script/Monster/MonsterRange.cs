@@ -7,6 +7,7 @@ public class MonsterRange : Monster
 {
     public GameObject bullet;
     private float attackDelayTmp;
+    [SerializeField] private AudioClip clip;
 
     private void Start()
     {
@@ -48,6 +49,11 @@ public class MonsterRange : Monster
 
     void Attack()
     {
+        if (clip != null)
+        {
+            GameObject soundObj = SoundManager.Instance.PlayClip(clip);
+            soundObj.transform.position = transform.position;
+        }
         GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(30f, 0f, 0f));
         MonsterBullet monsterBullet = bulletInstance.GetComponent<MonsterBullet>();
         monsterBullet.attack = attackBullet;
