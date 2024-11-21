@@ -170,8 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f83912cac0d28c4d98d0509b920e3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformIndex: 0
-  platformWidth: 1
+  blockIndex: 1
 --- !u!65 &542250231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -393,7 +392,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ba417128651ed448f88166df9b0b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocks: []
+  player: {fileID: 0}
+  platforms:
+  - {fileID: 1981877771}
+  - {fileID: 542250228}
+  - {fileID: 1290428220}
+  platformWidth: 20
+  currentIndex: -1
 --- !u!1001 &1202163396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -515,8 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f83912cac0d28c4d98d0509b920e3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformIndex: 0
-  platformWidth: 1
+  blockIndex: 2
 --- !u!65 &1290428223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1112,8 +1116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f83912cac0d28c4d98d0509b920e3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformIndex: 0
-  platformWidth: 1
+  blockIndex: 0
 --- !u!65 &1981877774
 BoxCollider:
   m_ObjectHideFlags: 0

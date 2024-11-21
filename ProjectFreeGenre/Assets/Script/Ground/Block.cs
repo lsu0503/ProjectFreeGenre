@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+
     private BlockController blockController; // BlockController ÂüÁ¶
 
     void Start()
