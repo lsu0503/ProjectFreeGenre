@@ -16,4 +16,14 @@ public class GameManager : Singleton<GameManager>
     public MonsterGeneration monsterGeneration;
     public List<GameObject> monsters = new List<GameObject>();
 
+    public SceneDestructor sceneDestructor;
+
+    public void GameOver()
+    {
+
+    }
+    public void GameClear()
+    {
+
+    }
 }
