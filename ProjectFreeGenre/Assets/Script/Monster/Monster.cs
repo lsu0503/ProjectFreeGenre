@@ -54,7 +54,7 @@ public abstract class Monster : MonoBehaviour
             IDamage damageable = collision.gameObject.GetComponent<IDamage>();
             if (damageable != null)
             {
-                damageable.Attacked(attackBody);
+                damageable.Attacked(statSO.attackBody);
             }
 
             IKnockback knockbackObject = collision.gameObject.GetComponent<IKnockback>();

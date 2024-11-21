@@ -20,7 +20,6 @@ public class GameManager : Singleton<GameManager>
     public SceneController sceneController;
     public event Action OnGameOverEvent;
     public event Action OnGameClearEvent;
-    public event Action OnSceneExitEvent;
 
     public float currentTIme;
 
@@ -44,22 +43,17 @@ public class GameManager : Singleton<GameManager>
         OnGameClearEvent?.Invoke();
     }
 
-    public void CallOnSceneExit()
-    {
-        OnSceneExitEvent?.Invoke();
-    }
-
     public void ClearManager()
     {
         _player = null;
         objectPool = null;
         monsterGenerator = null;
         monsters.Clear();
-        sceneController = null;
 
+        sceneController = null;
         OnGameClearEvent = null;
-        OnSceneExitEvent = null;
-        OnSceneExitEvent = null;
+        OnGameOverEvent = null;
+
         currentTIme = 0.0f;
     }
 }
