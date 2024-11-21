@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterType: 1
   attackType: 1
-  hp: 5
-  attackBody: 1
-  attackBullet: 5
+  hp: 50
+  attackBody: 3
+  attackBullet: 10
   attackDelay: 3
-  speed: 15
+  speed: 3
   knockBackPower: 5
   knockBackResistance: 3
   distance: 4

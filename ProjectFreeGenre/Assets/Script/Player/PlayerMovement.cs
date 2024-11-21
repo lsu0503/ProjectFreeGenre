@@ -17,11 +17,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 dashEndPos;
     private float dashTime;
 
+    private Animator animator;
+    private SpriteRenderer spriteRenderer; // SpriteRenderer 참조
     public event Action<Vector2> OnDirectionChanged; // 진행 방향 이벤트
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // 자식 오브젝트의 SpriteRenderer 가져오기
     }
 
     void FixedUpdate()
@@ -33,7 +37,19 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Dash();
-        }        
+        }
+
+        animator.SetBool("isMoving", curMovementInput != Vector2.zero);
+
+        // 이동 방향에 따라 스프라이트 반전
+        if (curMovementInput.x < 0)
+        {
+            spriteRenderer.flipX = true; // 왼쪽으로 이동 시 반전
+        }
+        else if (curMovementInput.x > 0)
+        {
+            spriteRenderer.flipX = false; // 오른쪽으로 이동 시 원래 방향
+        }
     }
 
     void Move()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ActionItem : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class ActionItem : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject attackObj;
     private ItemAttack attackComponent;
+    public event Action OnUseEvent;
+    public event Action OnEndEvent;
 
     private void Awake()
     {
@@ -26,17 +29,25 @@ public class ActionItem : MonoBehaviour
 
     public void StartUse()
     {
+        OnUseEvent?.Invoke();
         attackComponent.ClearHitData();
         gameObject.SetActive(true);
     }
 
     private void EndUse()
     {
+        OnEndEvent?.Invoke();
         gameObject.SetActive(false);
     }
 
     public void AttackOn()
     {
+        if (data.clip != null)
+        {
+            GameObject SoundObj = SoundManager.Instance.PlayClip(data.clip);
+            SoundObj.transform.position = transform.position;
+        }
+
         attackObj.SetActive(true);
     }
 

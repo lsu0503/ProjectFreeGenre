@@ -4,16 +4,9 @@ using UnityEngine.EventSystems;
 
 public class UIClicker : MonoBehaviour, IPointerClickHandler
 {
-    private bool isMouseOn;
-
     public event Action OnLeftCilickEvent;
     public event Action OnMiddleClickEvent;
     public event Action OnRightCilickEvent;
-
-    private void Start()
-    {
-        isMouseOn = false;
-    }
 
     public void OnPointerClick(PointerEventData eventData)
     {

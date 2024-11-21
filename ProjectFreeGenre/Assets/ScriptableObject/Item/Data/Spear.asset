@@ -22,4 +22,4 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 128
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 3becec1909f194046945d85ac1077772, type: 3}

@@ -18,6 +18,6 @@ public class ItemDictionaryConstructer : MonoBehaviour
 
         ItemDataManager.Instance.SetDict(tempDict);
 
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

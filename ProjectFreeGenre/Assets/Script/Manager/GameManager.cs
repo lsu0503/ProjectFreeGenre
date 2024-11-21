@@ -12,6 +12,8 @@ public class GameManager : Singleton<GameManager>
         set { _player = value; }
     }
 
+    public ObjectPool objectPool;
+    public MonsterGeneration monsterGeneration;
     public List<GameObject> monsters = new List<GameObject>();
 
 }
