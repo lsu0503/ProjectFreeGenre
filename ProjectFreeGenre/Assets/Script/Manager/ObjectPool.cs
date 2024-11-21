@@ -39,14 +39,15 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromObjectPool(string tag)
+    public GameObject SpawnFromObjectPool(string tag, Vector3 pos)
     {
         if (!objectPoolsDictionary.ContainsKey(tag))
             return null;
 
         GameObject obj = objectPoolsDictionary[tag].Dequeue();
         objectPoolsDictionary[tag].Enqueue(obj);
-        GameManager.Instance.monsterGeneration.StatUpdate(obj);
+        GameManager.Instance.monsterGenerator.StatUpdate(obj);
+        obj.transform.position = pos;
         obj.SetActive(true);
 
         GameManager.Instance.monsters.Add(obj);

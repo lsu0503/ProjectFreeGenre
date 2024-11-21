@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public ObjectPool objectPool;
-    public MonsterGeneration monsterGeneration;
+    public MonsterGenerator monsterGenerator;
     public List<GameObject> monsters = new List<GameObject>();
 
     public SceneDestructor sceneDestructor;

@@ -56,13 +56,13 @@ public abstract class Monster : MonoBehaviour
             {
                 damageable.Attacked(attackBody);
             }
-        }
-        IKnockback knockbackObject = collision.gameObject.GetComponent<IKnockback>();
 
-        if (knockbackObject != null)
-        {
-            Vector3 direction = collision.gameObject.transform.position - transform.position;
-            knockbackObject.ApplyKnockback(direction, statSO.knockBackPower);
+            IKnockback knockbackObject = collision.gameObject.GetComponent<IKnockback>();
+            if (knockbackObject != null)
+            {
+                Vector3 direction = collision.gameObject.transform.position - transform.position;
+                knockbackObject.ApplyKnockback(direction, statSO.knockBackPower);
+            }
         }
     }
 }
