@@ -5196,7 +5196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ebff5bb3faf3a45a05e7843f4db1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statSO: {fileID: 0}
+  statSO: {fileID: 11400000, guid: bae8e915cef0c724ca681769b3a156e3, type: 2}
   playerMove: {fileID: 28909016893899842}
   equipment: {fileID: 0}
   interaction: {fileID: 0}
