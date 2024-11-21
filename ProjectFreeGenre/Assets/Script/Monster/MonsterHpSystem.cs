@@ -18,7 +18,6 @@ public class MonsterHpSystem : MonoBehaviour, IDamage
 
     public void Attacked(float damage)
     {
-        OnDie?.Invoke();
         hpTmp -= damage;
         HpUpdate();
         if (hpTmp <= 0)
@@ -29,6 +28,7 @@ public class MonsterHpSystem : MonoBehaviour, IDamage
 
     public void Die()
     {
+        OnDie?.Invoke();
         Debug.Log("Àû »ç¸Á");
         GameManager.Instance.monsters.Remove(gameObject);
         gameObject.SetActive(false);

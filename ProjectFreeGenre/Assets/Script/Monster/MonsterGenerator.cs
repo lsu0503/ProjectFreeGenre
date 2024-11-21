@@ -8,10 +8,9 @@ public class MonsterGenerator : MonoBehaviour
     public GameObject boss;
     [SerializeField] private bool isBoss;
 
-    private int stageLevel;
-    [SerializeField] public int levelScaling = 0;
+    private int stageLevel;//무슨 스테이지인지
+    [SerializeField] public int levelScaling;//현재난이도 및 등장하는 적의 수량
     [SerializeField] private float distance;
-    [SerializeField] private int spawnCnt;
 
     [SerializeField] float increasePercent = 0.1f;//증가량
 
@@ -22,13 +21,13 @@ public class MonsterGenerator : MonoBehaviour
     private void Awake()
     {
         GameManager.Instance.monsterGenerator = this;
-        LevelScalingUp();
-        //timeTmp = time;
     }
 
     private void Start()
     {
         stageLevel = SceneManager.GetActiveScene().buildIndex;
+        //levelScaling = 0;
+        LevelScalingUp();
     }
 
     private void Update()
@@ -53,7 +52,6 @@ public class MonsterGenerator : MonoBehaviour
         if(levelScaling >= 10)
         {
             isBoss = true;
-            MonsterSpawnStage1(1);
             if (stageLevel == 1)
                 MonsterSpawnStage1(1);
             else
@@ -87,9 +85,9 @@ public class MonsterGenerator : MonoBehaviour
 
     private void MonsterSpawnStage1(int _spawnCycle)
     {
-        spawnCnt = 0;
+        int spawnCntTmp = 0;
 
-        while (spawnCnt < _spawnCycle)
+        while (spawnCntTmp < _spawnCycle)
         {
             float randomXPos = Random.Range(-4f, 12f);
             float randomZPos = Random.Range(-10f, 6f);
@@ -112,9 +110,10 @@ public class MonsterGenerator : MonoBehaviour
             else
             {
                 Instantiate(boss, spawnPos, Quaternion.identity);
+                return;
             }
 
-            spawnCnt++;
+            spawnCntTmp++;
         }
         if (levelScaling % 10 == 0)
             GameManager.Instance.objectPool.SpawnFromObjectPool("Mimic", spawnPos);
@@ -122,9 +121,9 @@ public class MonsterGenerator : MonoBehaviour
     }
     private void MonsterSpawnStage2(int _spawnCycle)
     {
-        spawnCnt = 0;
+        int spawnCntTmp = 0;
 
-        while (spawnCnt < _spawnCycle)
+        while (spawnCntTmp < _spawnCycle)
         {
             float randomXPos = Random.Range(GameManager.Instance.player.transform.position.x - 8f, GameManager.Instance.player.transform.position.x + 8f);
             float randomZPos = Random.Range(-10f, 7f);
@@ -146,10 +145,11 @@ public class MonsterGenerator : MonoBehaviour
             }
             else
             {
-
+                Instantiate(boss, spawnPos, Quaternion.identity);
+                return;
             }
 
-            spawnCnt++;
+            spawnCntTmp++;
         }
         if (levelScaling % 10 == 0)
             GameManager.Instance.objectPool.SpawnFromObjectPool("Mimic", spawnPos);
