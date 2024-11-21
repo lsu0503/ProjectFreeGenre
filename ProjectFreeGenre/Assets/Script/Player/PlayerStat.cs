@@ -10,13 +10,9 @@ public class PlayerStat : MonoBehaviour, IDamage, IDashable
     public event Action onTakeDamage;
 
     PlayerCondition health { get { return playerUI.health; } }
-
     PlayerCondition stamina { get { return playerUI.stamina; } }
 
-    public float CurrentHp { get; set; }
-    public int Speed { get; set; }
-    public int AttackPower { get; set; }
-    public int AttackDelay { get; set; }
+    public float knockBackResistance; // Knockback ÀúÇ× ½ºÅÈ
 
     void Update()
     {
@@ -47,5 +43,4 @@ public class PlayerStat : MonoBehaviour, IDamage, IDashable
         health.Subtract(damage);
         onTakeDamage?.Invoke();
     }
-
 }

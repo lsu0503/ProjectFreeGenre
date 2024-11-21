@@ -5199,6 +5199,7 @@ MonoBehaviour:
   equipment: {fileID: 0}
   interaction: {fileID: 0}
   playerStat: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!114 &28909016893899842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5229,6 +5230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerUI: {fileID: 0}
+  knockBackResistance: 1
 --- !u!114 &6448733509608933136
 MonoBehaviour:
   m_ObjectHideFlags: 0
