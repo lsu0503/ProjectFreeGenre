@@ -1,25 +1,22 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    public int blockID;
+    private BlockController blockController; // BlockController 참조
 
-    BlockManager blockManager;
-
-    private void Awake()
+    void Start()
     {
-        blockManager = FindAnyObjectByType<BlockManager>();
+        // 씬 내의 BlockController를 찾음
+        blockController = FindObjectOfType<BlockController>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        // 플레이어가 트리거에 닿았는지 확인
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            blockManager.curBlockID = blockID;
-            blockManager.MoveBlock();
+            // BlockController에 현재 블록을 전달
+            blockController.OnPlayerEnterBlock(this);
         }
     }
 }
