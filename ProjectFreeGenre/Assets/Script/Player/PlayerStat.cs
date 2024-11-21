@@ -24,7 +24,7 @@ public class PlayerStat : MonoBehaviour, IDamage
     }
     public void Die()
     {
-        Debug.Log("ав╬З╢ы!");
+        GameManager.Instance.GameOver();
     }
 
     public void Heal(float amount)
