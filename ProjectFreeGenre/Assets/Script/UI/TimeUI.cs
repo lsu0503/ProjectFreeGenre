@@ -18,7 +18,7 @@ public class TimeUI : MonoBehaviour
 
     private void Update()
     {
-        minutes = Mathf.FloorToInt(GameManager.Instance.currentTIme / 60f)
+        minutes = Mathf.FloorToInt(GameManager.Instance.currentTIme / 60f);
         seconds = Mathf.FloorToInt(GameManager.Instance.currentTIme % 60f);
         milliseconds = Mathf.FloorToInt((GameManager.Instance.currentTIme % 1f) * 1000f);
 
