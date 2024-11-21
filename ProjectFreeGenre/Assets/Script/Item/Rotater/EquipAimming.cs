@@ -19,7 +19,7 @@ public class EquipAimming : EquipRotater
 
     private void Update()
     {
-        if (isAttacking)
+        if (isAttacking && target != null)
         {
             ChangeDirection();
         }
