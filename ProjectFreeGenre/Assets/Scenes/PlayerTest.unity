@@ -249,11 +249,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 28909016893899842, guid: 28dd14f6de1ae024798f1b7bcbfae4dd,
-        type: 3}
-      propertyPath: dashEnergy
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 3053929165473727105, guid: 28dd14f6de1ae024798f1b7bcbfae4dd,
         type: 3}
       propertyPath: m_Name
