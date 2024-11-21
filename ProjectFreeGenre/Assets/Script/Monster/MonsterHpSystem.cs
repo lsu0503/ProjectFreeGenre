@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class MonsterHpSystem : MonoBehaviour, IDamage
 {
+    public event Action OnDie;
     public Monster monster;
     public Slider hpBar;
     public float hpTmp;
@@ -16,6 +18,7 @@ public class MonsterHpSystem : MonoBehaviour, IDamage
 
     public void Attacked(float damage)
     {
+        OnDie?.Invoke();
         hpTmp -= damage;
         HpUpdate();
         if (hpTmp <= 0)
@@ -24,7 +27,7 @@ public class MonsterHpSystem : MonoBehaviour, IDamage
         }
     }
 
-    private void Die()
+    public void Die()
     {
         Debug.Log("Àû »ç¸Á");
         GameManager.Instance.monsters.Remove(gameObject);

@@ -46,7 +46,7 @@ public class ObjectPool : MonoBehaviour
 
         GameObject obj = objectPoolsDictionary[tag].Dequeue();
         objectPoolsDictionary[tag].Enqueue(obj);
-        GameManager.Instance.monsterGeneric.StatUpdate(obj);
+        GameManager.Instance.monsterGeneration.StatUpdate(obj);
         obj.SetActive(true);
 
         GameManager.Instance.monsters.Add(obj);

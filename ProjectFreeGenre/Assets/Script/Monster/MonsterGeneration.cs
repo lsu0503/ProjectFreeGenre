@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterGeneric : MonoBehaviour
+public class MonsterGeneration : MonoBehaviour
 {
     public int levelScaling = 0;
 
     [SerializeField] float increasePercent = 0.1f;//증가량
 
     [SerializeField] private float time;
-    [SerializeField] private float timeTmp;
+    private float timeTmp;
 
 
     private void Awake()
     {
-        GameManager.Instance.monsterGeneric = this;
+        GameManager.Instance.monsterGeneration = this;
         LevelScalingUp();
         timeTmp = time;
     }
@@ -27,7 +27,7 @@ public class MonsterGeneric : MonoBehaviour
         }
         else
         {
-            MonsterRespawn(levelScaling);
+            MonsterSpawn(levelScaling);
             timeTmp = time;
         }
     }
@@ -42,29 +42,25 @@ public class MonsterGeneric : MonoBehaviour
     {
         
         Monster monsterObj = obj.GetComponent<Monster>();
-        float baseHP = monsterObj.statSO.hp;
-        float basAttackBody = monsterObj.statSO.attackBody;
-        float basAttackBullet = monsterObj.statSO.attackBullet;
-        int level = GameManager.Instance.monsterGeneric.levelScaling; // 현재 레벨
+        MonsterStatSO monsterStat = monsterObj.statSO;
 
-        monsterObj.hp = baseHP + (baseHP * increasePercent * (level - 1));
-        monsterObj.attackBody = basAttackBody + (basAttackBody * increasePercent * (level - 1));
-        monsterObj.attackBullet = basAttackBullet + (basAttackBullet * increasePercent * (level - 1));
-
-        Debug.Log(monsterObj.hp);
-        Debug.Log(monsterObj.attackBody);
+        monsterObj.hp = monsterStat.hp + (monsterStat.hp * increasePercent * (levelScaling - 1));
+        monsterObj.attackBody = monsterStat.attackBody + (monsterStat.attackBody * increasePercent * (levelScaling - 1));
+        monsterObj.attackBullet = monsterStat.attackBullet + (monsterStat.attackBullet * increasePercent * (levelScaling - 1));
     }
 
-    public void MonsterRespawn(int _spawnCycle)
+    public void MonsterSpawn(int _spawnCycle)
     {
         for(int i=0; i<_spawnCycle; i++)
         {
-            int monster_Ran = Random.Range(0, 3);
+            int monster_Ran = Random.Range(0, 12);
 
-            if (monster_Ran < 1)
+            if (monster_Ran < 5)
                 GameManager.Instance.objectPool.SpawnFromObjectPool("Imp");
-            else
+            else if(monster_Ran < 11)
                 GameManager.Instance.objectPool.SpawnFromObjectPool("UnderTaker");
+            else
+                GameManager.Instance.objectPool.SpawnFromObjectPool("Mimic");
         }
     }
 }
