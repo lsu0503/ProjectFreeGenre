@@ -1046,7 +1046,7 @@ GameObject:
   - component: {fileID: 1556406813}
   - component: {fileID: 1556406812}
   m_Layer: 0
-  m_Name: MonsterGeneric
+  m_Name: MonsterGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1065,6 +1065,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelScaling: 0
+  distance: 10
+  spawnCnt: 0
   increasePercent: 0.1
   time: 5
 --- !u!4 &1556406813
@@ -1205,7 +1207,7 @@ PrefabInstance:
     - target: {fileID: 5630621411413131503, guid: 28dd14f6de1ae024798f1b7bcbfae4dd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: 5630621411413131503, guid: 28dd14f6de1ae024798f1b7bcbfae4dd,
         type: 3}
@@ -1252,6 +1254,11 @@ PrefabInstance:
       propertyPath: maxSlot
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9043654478241505860, guid: 28dd14f6de1ae024798f1b7bcbfae4dd,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1266,10 +1273,10 @@ SceneRoots:
   - {fileID: 162244355}
   - {fileID: 1136336750}
   - {fileID: 1413962076}
+  - {fileID: 1556406813}
   - {fileID: 742778270}
   - {fileID: 1255426533}
   - {fileID: 1940597377}
   - {fileID: 1215713359}
   - {fileID: 1851166529}
   - {fileID: 93530690}
-  - {fileID: 1556406813}
