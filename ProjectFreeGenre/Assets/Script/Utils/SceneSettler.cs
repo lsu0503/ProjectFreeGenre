@@ -9,10 +9,19 @@ public class UIConstructingCell
     public GameObject[] uiArray;
 }
 
+[Serializable]
+public class ObjectConstructingCell
+{
+    public GameObject targetObject;
+    public Vector3 position;
+}
+
+
 public class SceneSettler : MonoBehaviour
 {
     [SerializeField] private AudioClip clip;
     [SerializeField] private UIConstructingCell[] cells;
+    [SerializeField] private ObjectConstructingCell[] objects;
 
     private void Awake()
     {
@@ -38,6 +47,11 @@ public class SceneSettler : MonoBehaviour
             {
                 Instantiate(ui, curObj.transform);
             }
+        }
+
+        foreach(ObjectConstructingCell cell in objects)
+        {
+            Instantiate(cell.targetObject, position: cell.position, Quaternion.identity);
         }
     }
 }

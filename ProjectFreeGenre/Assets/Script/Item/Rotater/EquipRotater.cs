@@ -22,6 +22,9 @@ public abstract class EquipRotater : MonoBehaviour
 
     public virtual void RemoveAction()
     {
-        StopCoroutine(routine);
+        if (routine != null)
+        {
+            StopCoroutine(routine);
+        }
     }
 }
