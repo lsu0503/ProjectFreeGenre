@@ -170,8 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f83912cac0d28c4d98d0509b920e3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformIndex: 0
-  platformWidth: 1
 --- !u!65 &542250231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -298,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   objectPool: {fileID: 0}
-  monsterGeneration: {fileID: 0}
+  monsterGenerator: {fileID: 0}
   monsters: []
 --- !u!4 &594634141
 Transform:
@@ -393,7 +391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ba417128651ed448f88166df9b0b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocks: []
+  player: {fileID: 0}
+  platforms: []
+  platformWidth: 10
 --- !u!1001 &1202163396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -515,8 +515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f83912cac0d28c4d98d0509b920e3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformIndex: 0
-  platformWidth: 1
 --- !u!65 &1290428223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1112,8 +1110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f83912cac0d28c4d98d0509b920e3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformIndex: 0
-  platformWidth: 1
 --- !u!65 &1981877774
 BoxCollider:
   m_ObjectHideFlags: 0

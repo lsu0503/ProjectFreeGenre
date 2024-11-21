@@ -60,11 +60,10 @@ public class MonsterGenerator : MonoBehaviour
 
     public void MonsterSpawn(int _spawnCycle)
     {
-        MonsterSpawnStage1(_spawnCycle);
         if (stageLevel == 1)
             MonsterSpawnStage1(_spawnCycle);
         else
-            MonsterSpawnStage2();
+            MonsterSpawnStage2(_spawnCycle);
     }
 
     private void MonsterSpawnStage1(int _spawnCycle)
@@ -80,7 +79,6 @@ public class MonsterGenerator : MonoBehaviour
             float distanceTmp = Vector3.Distance(spawnPos, GameManager.Instance.player.transform.position);
             if (distanceTmp < distance)
             {
-                Debug.Log("가까워서 실패");
                 continue;
             }
 
@@ -92,13 +90,35 @@ public class MonsterGenerator : MonoBehaviour
             else
                 GameManager.Instance.objectPool.SpawnFromObjectPool("Mimic", spawnPos);
 
-            Debug.Log("성공");
             spawnCnt++;
         }
 
     }
-    private void MonsterSpawnStage2()
+    private void MonsterSpawnStage2(int _spawnCycle)
     {
+        spawnCnt = 0;
 
+        while (spawnCnt < _spawnCycle)
+        {
+            float randomXPos = Random.Range(GameManager.Instance.player.transform.position.x - 8f, GameManager.Instance.player.transform.position.x + 8f);
+            float randomZPos = Random.Range(-10f, 7f);
+            Vector3 spawnPos = new Vector3(randomXPos, 0, randomZPos);
+
+            float distanceTmp = Vector3.Distance(spawnPos, GameManager.Instance.player.transform.position);
+            if (distanceTmp < distance)
+            {
+                continue;
+            }
+
+            int monster_Ran = Random.Range(0, 12);
+            if (monster_Ran < 5)
+                GameManager.Instance.objectPool.SpawnFromObjectPool("Imp", spawnPos);
+            else if (monster_Ran < 11)
+                GameManager.Instance.objectPool.SpawnFromObjectPool("UnderTaker", spawnPos);
+            else
+                GameManager.Instance.objectPool.SpawnFromObjectPool("Mimic", spawnPos);
+
+            spawnCnt++;
+        }
     }
 }
