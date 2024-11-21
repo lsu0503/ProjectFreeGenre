@@ -249,6 +249,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 28909016893899842, guid: 28dd14f6de1ae024798f1b7bcbfae4dd,
+        type: 3}
+      propertyPath: dashEnergy
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3053929165473727105, guid: 28dd14f6de1ae024798f1b7bcbfae4dd,
         type: 3}
       propertyPath: m_Name
@@ -627,6 +632,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 788186899791463319, guid: 6d67e96ca0534f84fa989c39c6fcb461,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 788186899791463319, guid: 6d67e96ca0534f84fa989c39c6fcb461,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 788186899791463319, guid: 6d67e96ca0534f84fa989c39c6fcb461,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004620020650899488, guid: 6d67e96ca0534f84fa989c39c6fcb461,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004620020650899488, guid: 6d67e96ca0534f84fa989c39c6fcb461,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3123523288237684826, guid: 6d67e96ca0534f84fa989c39c6fcb461,
         type: 3}
       propertyPath: m_Pivot.x

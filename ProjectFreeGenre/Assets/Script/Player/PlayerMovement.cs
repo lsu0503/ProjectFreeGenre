@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-    public float dashForce = 10f; // Dash 힘
-    public float dashDuration = 0.2f; // Dash 지속 시간
+    public float dashForce; // Dash 힘
+    public float dashDuration; // Dash 지속 시간
+    public float dashEnergy; // Dash 시 소모되는 스태미나
     public Vector2 curMovementInput;
     private Rigidbody rb;
     private bool isDashing = false;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer; // SpriteRenderer 참조
     private ParticleSystem runParticles; // Run 상태의 ParticleSystem
     private ParticleSystem dashParticles; // Dash 상태의 ParticleSystem
+    private PlayerStat playerStat; // PlayerStat 참조
     public event Action<Vector2> OnDirectionChanged; // 진행 방향 이벤트
 
     private void Awake()
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // 자식 오브젝트의 SpriteRenderer 가져오기
+        playerStat = GetComponent<PlayerStat>(); // PlayerStat 컴포넌트 가져오기
 
         // 자식 오브젝트에서 특정 이름을 가진 파티클 시스템 가져오기
         foreach (Transform child in transform)
@@ -103,12 +106,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed && !isDashing)
         {
-            Vector2 dashDirection2D = curMovementInput.normalized;
-            Vector3 dashDirection = new Vector3(dashDirection2D.x, 0, dashDirection2D.y);
-            dashStartPos = transform.position;
-            dashEndPos = transform.position + dashDirection * dashForce;
-            dashTime = 0;
-            isDashing = true;
+            // 스태미나가 충분한지 확인
+            if (playerStat.playerUI.stamina.curValue >= dashEnergy)
+            {
+                Vector2 dashDirection2D = curMovementInput.normalized;
+                Vector3 dashDirection = new Vector3(dashDirection2D.x, 0, dashDirection2D.y);
+                dashStartPos = transform.position;
+                dashEndPos = transform.position + dashDirection * dashForce;
+                dashTime = 0;
+                isDashing = true;
+
+                // Dash 시 Sprint 메서드 호출하여 스태미나 감소
+                playerStat.Sprint(dashEnergy);
+            }
         }
     }
 
