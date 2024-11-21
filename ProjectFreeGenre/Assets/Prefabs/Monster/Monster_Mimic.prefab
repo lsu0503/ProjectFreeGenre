@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7397564646969504215}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 4450575433207848496}
   - component: {fileID: 5865024942359304226}
   - component: {fileID: 4698748984929109958}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 9204668554313717966}
   - component: {fileID: 4637433590737634678}
   - component: {fileID: 4975236562731690423}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 3056286232776557809}
   - component: {fileID: 1031572366391614251}
   - component: {fileID: 8074986400885336166}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1185954351948387502}
   - component: {fileID: 7213305303799567837}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,8 @@ GameObject:
   - component: {fileID: 153352241082391461}
   - component: {fileID: 1114901017172765175}
   - component: {fileID: 4246426568307314930}
-  m_Layer: 0
+  - component: {fileID: 6176577178822907695}
+  m_Layer: 7
   m_Name: Monster_Mimic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,6 +543,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10f38558d02c184cbe03ac3ee760788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6176577178822907695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7039026068467102515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a5569dceb08c947bf57738410fc377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 1605369949003725974, guid: bb9b03ce020388046a3ecfdf6bc2d4e2, type: 3}
+  - {fileID: 316990271265888392, guid: f21fcfbea33f6394fb2972be14777631, type: 3}
+  - {fileID: 1509827953430938624, guid: ceb3c8827e8d1cc4f96fc9e25d646696, type: 3}
+  hpSystem: {fileID: 1114901017172765175}
 --- !u!1 &8139722058821549282
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8492750254278604118}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +607,7 @@ GameObject:
   - component: {fileID: 6960668535769818644}
   - component: {fileID: 7581922462330853631}
   - component: {fileID: 2550130965906054180}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}

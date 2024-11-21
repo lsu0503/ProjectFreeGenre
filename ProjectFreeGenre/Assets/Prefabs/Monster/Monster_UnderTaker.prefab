@@ -281,6 +281,9 @@ MonoBehaviour:
   statSO: {fileID: 11400000, guid: bae8e915cef0c724ca681769b3a156e3, type: 2}
   hpSystem: {fileID: 2064498123574050808}
   rb: {fileID: 0}
+  hp: 0
+  attackBody: 0
+  attackBullet: 0
   bullet: {fileID: 3330635353176634104, guid: fd5769959bf57124894156617b7b990e, type: 3}
 --- !u!114 &2064498123574050808
 MonoBehaviour:
