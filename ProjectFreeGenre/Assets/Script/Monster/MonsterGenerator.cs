@@ -5,22 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class MonsterGenerator : MonoBehaviour
 {
+    public GameObject boss;
+    [SerializeField] private bool isBoss;
+
     private int stageLevel;
-    public int levelScaling = 0;
+    [SerializeField] public int levelScaling = 0;
     [SerializeField] private float distance;
     [SerializeField] private int spawnCnt;
 
     [SerializeField] float increasePercent = 0.1f;//Αυ°‘·®
 
-    [SerializeField] private float time;
-    private float timeTmp;
-
+    [SerializeField] private float spawnTime;
+    private float spawnTimeTmp;
+    Vector3 spawnPos;
 
     private void Awake()
     {
         GameManager.Instance.monsterGenerator = this;
         LevelScalingUp();
-        timeTmp = time;
+        //timeTmp = time;
     }
 
     private void Start()
@@ -30,21 +33,37 @@ public class MonsterGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (timeTmp > 0)
+        if(isBoss == false)
         {
-            timeTmp -= Time.deltaTime;
-        }
-        else
-        {
-            MonsterSpawn(levelScaling);
-            timeTmp = time;
+            if (spawnTimeTmp > 0)
+            {
+                spawnTimeTmp -= Time.deltaTime;
+            }
+            else
+            {
+                MonsterSpawn(levelScaling);
+                spawnTimeTmp = spawnTime;
+            }
         }
     }
 
     public void LevelScalingUp()
     {
         levelScaling++;
-        Invoke("LevelScalingUp", 60f);
+        if(levelScaling >= 10)
+        {
+            isBoss = true;
+            MonsterSpawnStage1(1);
+            if (stageLevel == 1)
+                MonsterSpawnStage1(1);
+            else
+                MonsterSpawnStage2(1);
+        }
+        else
+        {
+            isBoss = false;
+            Invoke("LevelScalingUp", 60f);
+        }
     }
 
     public void StatUpdate(GameObject obj)
@@ -70,11 +89,11 @@ public class MonsterGenerator : MonoBehaviour
     {
         spawnCnt = 0;
 
-        while(spawnCnt < _spawnCycle)
+        while (spawnCnt < _spawnCycle)
         {
             float randomXPos = Random.Range(-4f, 12f);
             float randomZPos = Random.Range(-10f, 6f);
-            Vector3 spawnPos = new Vector3(randomXPos, 0, randomZPos);
+            spawnPos = new Vector3(randomXPos, 0, randomZPos);
 
             float distanceTmp = Vector3.Distance(spawnPos, GameManager.Instance.player.transform.position);
             if (distanceTmp < distance)
@@ -82,16 +101,23 @@ public class MonsterGenerator : MonoBehaviour
                 continue;
             }
 
-            int monster_Ran = Random.Range(0, 12);
-            if (monster_Ran < 5)
-                GameManager.Instance.objectPool.SpawnFromObjectPool("Imp", spawnPos);
-            else if (monster_Ran < 11)
-                GameManager.Instance.objectPool.SpawnFromObjectPool("UnderTaker", spawnPos);
+            if(isBoss == false)
+            {
+                int monster_Ran = Random.Range(0, 12);
+                if (monster_Ran < 7)
+                    GameManager.Instance.objectPool.SpawnFromObjectPool("Imp", spawnPos);
+                else
+                    GameManager.Instance.objectPool.SpawnFromObjectPool("UnderTaker", spawnPos);
+            }
             else
-                GameManager.Instance.objectPool.SpawnFromObjectPool("Mimic", spawnPos);
+            {
+                Instantiate(boss, spawnPos, Quaternion.identity);
+            }
 
             spawnCnt++;
         }
+        if (levelScaling % 10 == 0)
+            GameManager.Instance.objectPool.SpawnFromObjectPool("Mimic", spawnPos);
 
     }
     private void MonsterSpawnStage2(int _spawnCycle)
@@ -102,7 +128,7 @@ public class MonsterGenerator : MonoBehaviour
         {
             float randomXPos = Random.Range(GameManager.Instance.player.transform.position.x - 8f, GameManager.Instance.player.transform.position.x + 8f);
             float randomZPos = Random.Range(-10f, 7f);
-            Vector3 spawnPos = new Vector3(randomXPos, 0, randomZPos);
+            spawnPos = new Vector3(randomXPos, 0, randomZPos);
 
             float distanceTmp = Vector3.Distance(spawnPos, GameManager.Instance.player.transform.position);
             if (distanceTmp < distance)
@@ -110,15 +136,22 @@ public class MonsterGenerator : MonoBehaviour
                 continue;
             }
 
-            int monster_Ran = Random.Range(0, 12);
-            if (monster_Ran < 5)
-                GameManager.Instance.objectPool.SpawnFromObjectPool("Imp", spawnPos);
-            else if (monster_Ran < 11)
-                GameManager.Instance.objectPool.SpawnFromObjectPool("UnderTaker", spawnPos);
+            if (isBoss == false)
+            {
+                int monster_Ran = Random.Range(0, 12);
+                if (monster_Ran < 7)
+                    GameManager.Instance.objectPool.SpawnFromObjectPool("Imp", spawnPos);
+                else
+                    GameManager.Instance.objectPool.SpawnFromObjectPool("UnderTaker", spawnPos);
+            }
             else
-                GameManager.Instance.objectPool.SpawnFromObjectPool("Mimic", spawnPos);
+            {
+
+            }
 
             spawnCnt++;
         }
+        if (levelScaling % 10 == 0)
+            GameManager.Instance.objectPool.SpawnFromObjectPool("Mimic", spawnPos);
     }
 }
