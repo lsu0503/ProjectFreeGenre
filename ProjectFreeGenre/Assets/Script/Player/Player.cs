@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
         playerStat = GetComponent<PlayerStat>();
         equipment = GetComponent<PlayerEquipment>();
         interaction = GetComponentInChildren<Interaction>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision)
