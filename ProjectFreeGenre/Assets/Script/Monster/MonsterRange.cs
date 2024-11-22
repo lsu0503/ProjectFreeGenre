@@ -57,7 +57,7 @@ public class MonsterRange : Monster
             GameObject soundObj = SoundManager.Instance.PlayClip(clip);
             soundObj.transform.position = transform.position;
         }
-        GameObject bulletInstance = Instantiate(bullet, firePoint.transform.position, Quaternion.identity);
+        GameObject bulletInstance = Instantiate(bullet, firePoint.transform.position, Quaternion.Euler(Vector3.zero));
         MonsterBullet monsterBullet = bulletInstance.GetComponent<MonsterBullet>();
         monsterBullet.attack = attackBullet;
 
