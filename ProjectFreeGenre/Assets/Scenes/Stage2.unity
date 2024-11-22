@@ -18496,6 +18496,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 4058119247722738843, guid: 0acd25e7e27d6a449863075148363e1d,
+        type: 3}
+      propertyPath: maxLevel
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058119247722738843, guid: 0acd25e7e27d6a449863075148363e1d,
+        type: 3}
+      propertyPath: spawnTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058119247722738843, guid: 0acd25e7e27d6a449863075148363e1d,
+        type: 3}
+      propertyPath: levelUpRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058119247722738843, guid: 0acd25e7e27d6a449863075148363e1d,
+        type: 3}
+      propertyPath: spawnAmountPerSpawn
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4916950216630005483, guid: 0acd25e7e27d6a449863075148363e1d,
         type: 3}
       propertyPath: m_LocalPosition.x
