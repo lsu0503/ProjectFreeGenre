@@ -7,6 +7,7 @@ public abstract class Monster : MonoBehaviour
     public MonsterStatSO statSO;
     private SpriteRenderer sprite;
     protected Animator animator;
+    public MonsterKnockBack knockback;
 
     public MonsterHpSystem hpSystem;
 
@@ -16,14 +17,20 @@ public abstract class Monster : MonoBehaviour
     public float attackBody;
     public float attackBullet;
 
+    public bool isOnKnockback;
+
     // Start is called before the first frame update
     protected void Start()
     {
         player = GameManager.Instance.player.gameObject;
         sprite = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
+        knockback = GetComponent<MonsterKnockBack>();
+        knockback.SetMonster(this);
+
         rb = GetComponent<Rigidbody>();
         hpSystem.HpUpdate();
+        isOnKnockback = false;
 
     }
 

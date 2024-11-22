@@ -6,7 +6,7 @@ using System;
 
 public class MonsterHpSystem : MonoBehaviour, IDamage
 {
-    public event Action OnDie;
+    public event Action OnDieEvent;
     public Monster monster;
     public Slider hpBar;
     public float hpTmp;
@@ -28,8 +28,8 @@ public class MonsterHpSystem : MonoBehaviour, IDamage
 
     public void Die()
     {
-        OnDie?.Invoke();
-        Debug.Log("적 사망");
+        OnDieEvent?.Invoke();
+        monster.knockback.StopRoutine();
         GameManager.Instance.monsters.Remove(gameObject);
         gameObject.SetActive(false);
         // 여기에 사망 처리 로직 추가

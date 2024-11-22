@@ -16,9 +16,9 @@ MonoBehaviour:
   attackType: 1
   hp: 50
   attackBody: 3
-  attackBullet: 10
+  attackBullet: 5
   attackDelay: 3
-  speed: 3
+  speed: 0.6
   knockBackPower: 5
   knockBackResistance: 3
-  distance: 4
+  distance: 10

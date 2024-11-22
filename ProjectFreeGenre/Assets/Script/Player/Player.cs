@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public PlayerEquipment equipment;
     public Interaction interaction;
     public PlayerStat playerStat;
+    public PlayerKnockback knockback;
 
     public Rigidbody rb;
 
@@ -19,6 +20,10 @@ public class Player : MonoBehaviour
         playerStat = GetComponent<PlayerStat>();
         equipment = GetComponent<PlayerEquipment>();
         interaction = GetComponentInChildren<Interaction>();
+        knockback = GetComponent<PlayerKnockback>();
+        knockback.SetPlayer(this);
+
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision)

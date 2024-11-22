@@ -5023,6 +5023,7 @@ GameObject:
   - component: {fileID: 28909016893899842}
   - component: {fileID: 8985964180161447489}
   - component: {fileID: 6448733509608933136}
+  - component: {fileID: 4019383964226753403}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -5195,10 +5196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ebff5bb3faf3a45a05e7843f4db1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statSO: {fileID: 11400000, guid: bae8e915cef0c724ca681769b3a156e3, type: 2}
   playerMove: {fileID: 28909016893899842}
   equipment: {fileID: 0}
   interaction: {fileID: 0}
   playerStat: {fileID: 0}
+  knockback: {fileID: 0}
   rb: {fileID: 0}
 --- !u!114 &28909016893899842
 MonoBehaviour:
@@ -5217,6 +5220,8 @@ MonoBehaviour:
   dashDuration: 0.35
   dashEnergy: 30
   curMovementInput: {x: 0, y: 0}
+  inputThreashold: 0.5
+  isOnKnockback: 0
 --- !u!114 &8985964180161447489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5244,6 +5249,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlot: 8
+--- !u!114 &4019383964226753403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053929165473727105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e133d3cc6d5c4ae4d867166d96deea50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4484214818381819502
 GameObject:
   m_ObjectHideFlags: 0
