@@ -623,11 +623,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statSO: {fileID: 11400000, guid: a57d300af730b3644afa41d70f2d15e6, type: 2}
+  knockback: {fileID: 0}
   hpSystem: {fileID: 5039579509815955459}
   rb: {fileID: 0}
   hp: 0
   attackBody: 0
   attackBullet: 0
+  isOnKnockback: 0
 --- !u!114 &5039579509815955459
 MonoBehaviour:
   m_ObjectHideFlags: 0

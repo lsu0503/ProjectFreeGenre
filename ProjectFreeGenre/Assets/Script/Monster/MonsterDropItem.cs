@@ -14,8 +14,10 @@ public class MonsterDropItem : MonoBehaviour
     private void DropItem()
     {
         int randomIndex = Random.Range(0, 3);
+        Vector3 dropPosition = transform.position;
+        dropPosition.y = 0.0f;
 
         GameObject dropItem = ItemDataManager.Instance.GetDict_Drop(randomIndex);
-        dropItem.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        dropItem.transform.position = dropPosition;
     }
 }

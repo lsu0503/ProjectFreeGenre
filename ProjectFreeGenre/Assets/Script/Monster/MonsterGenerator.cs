@@ -97,7 +97,8 @@ public class MonsterGenerator : MonoBehaviour
 
     public void BossSpawn()
     {
-        Instantiate(boss, SetSpawnPosition(), Quaternion.identity);
+        GameObject bossObj = Instantiate(boss, SetSpawnPosition(), Quaternion.identity);
+        StatUpdate(bossObj);
     }
 
     public void MimicSpawn()
