@@ -71,6 +71,7 @@ public class MonsterGenerator : MonoBehaviour
         MonsterStatSO monsterStat = monsterObj.statSO;
 
         monsterObj.hp = monsterStat.hp * (1.0f + (increasePercent * monsterLevel));
+        monsterObj.hpSystem.hpTmp = monsterObj.hp;
         monsterObj.attackBody = monsterStat.attackBody * (1.0f + (increasePercent * monsterLevel));
         monsterObj.attackBullet = monsterStat.attackBullet * (1.0f + (increasePercent * monsterLevel));
     }

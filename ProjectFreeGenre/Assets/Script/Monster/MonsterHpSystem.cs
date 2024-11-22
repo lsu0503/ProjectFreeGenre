@@ -11,11 +11,7 @@ public class MonsterHpSystem : MonoBehaviour, IDamage
     public Slider hpBar;
     public float hpTmp;
 
-    void OnEnable()
-    {
-        hpTmp = monster.hp;
-    }
-
+    
     public void Attacked(float damage)
     {
         hpTmp -= damage;
