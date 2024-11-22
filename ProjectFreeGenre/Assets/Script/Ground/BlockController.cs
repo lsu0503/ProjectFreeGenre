@@ -18,18 +18,17 @@ public class BlockController : MonoBehaviour
         int newIndex = GetPlatformIndex(block.gameObject);
         int previousIndex = GetPlatformIndex(prevBlock);
 
-        // 이전 블록의 인덱스보다 작은 경우 1번 블록을 오른쪽으로 이동 [이동 + 배열에서 블록을 빼서 반대편으로 넣기 + 전체 블록의 index 변화 적용이 필요]
+        // 이전 블록의 인덱스보다 작은 경우 1번 블록을 왼쪽으로 이동
         if (previousIndex != -1 && newIndex < previousIndex)
         {
             MoveBlockToStart(platforms.Count - 1);
         }
-        // 이전 블록의 인덱스보다 작은 경우 1번 블록을 오른쪽으로 이동 [이동 + 배열에서 블록을 빼서 반대편으로 넣기 + 전체 블록의 index 변화 적용이 필요]
+        // 이전 블록의 인덱스보다 큰 경우 0번 블록을 오른쪽으로 이동
         else if (previousIndex != -1 && newIndex > previousIndex)
         {
             MoveBlockToEnd(0);
         }
 
-        // 인덱스 업데이트
         prevBlock = block.gameObject;
     }
 
@@ -45,7 +44,7 @@ public class BlockController : MonoBehaviour
             // 블록의 위치 업데이트
             Vector3 newPosition = platforms[platforms.Count - 2].transform.position; // 마지막 블록 위치 참조
             newPosition.x += platformWidth; // 새로운 위치 계산
-            block.transform.position = newPosition;
+            Vector3 offset = newPosition - block.transform.position;
         }
     }
 
@@ -61,9 +60,10 @@ public class BlockController : MonoBehaviour
             // 블록의 위치 업데이트
             Vector3 newPosition = platforms[1].transform.position; // 기존 첫 번째 블록 위치 참조
             newPosition.x -= platformWidth; // 새로운 위치 계산
-            block.transform.position = newPosition;
+            Vector3 offset = newPosition - block.transform.position;
         }
     }
+
 
     // 블록의 인덱스를 가져오는 함수
     private int GetPlatformIndex(GameObject platform)
