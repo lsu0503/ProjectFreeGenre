@@ -22,7 +22,8 @@ public class MonsterKnockBack : MonoBehaviour, IKnockback
         if(routine != null) 
             StopCoroutine(routine);
 
-        routine = StartCoroutine(KnockBackRecover());
+        if (this != null && this.gameObject != null && this.gameObject.activeInHierarchy)
+            routine = StartCoroutine(KnockBackRecover());
     }
 
     public IEnumerator KnockBackRecover()
@@ -35,7 +36,6 @@ public class MonsterKnockBack : MonoBehaviour, IKnockback
     public void StopRoutine()
     {
         StopAllCoroutines();
-        monster.isOnKnockback = false;
-        
+        monster.isOnKnockback = false;   
     }
 }
