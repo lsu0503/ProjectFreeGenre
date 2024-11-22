@@ -68,8 +68,6 @@ public abstract class Monster : MonoBehaviour
             if (knockbackObject != null)
             {
                 Vector3 direction = collision.gameObject.transform.position - transform.position;
-                direction.y = 0;
-                direction = direction.normalized;
                 knockbackObject.ApplyKnockback(direction, statSO.knockBackPower);
             }
         }

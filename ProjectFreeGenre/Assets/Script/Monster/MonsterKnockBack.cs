@@ -16,8 +16,10 @@ public class MonsterKnockBack : MonoBehaviour, IKnockback
     {
         float adjustedForce = force / monster.statSO.knockBackResistance;
 
+        direction.y = 0;
+        direction = direction.normalized;
         // Rigidbody에 힘을 가하여 넉백 적용
-        monster.rb.AddForce(direction.normalized * adjustedForce, ForceMode.Impulse);
+        monster.rb.AddForce(direction * adjustedForce, ForceMode.Impulse);
 
         if(routine != null) 
             StopCoroutine(routine);
