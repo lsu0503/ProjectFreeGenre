@@ -7,6 +7,7 @@ public class MonsterBullet : MonoBehaviour
     public float attack;//총알 데미지
     [SerializeField] float speed;
     public Vector3 direction;//날라가는 방향
+    [SerializeField] private LayerMask targetLayers;
 
     private void OnEnable()
     {
@@ -25,7 +26,7 @@ public class MonsterBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 6)
+        if ((targetLayers & 1 << collision.gameObject.layer) != 0)
         {
             IDamage damageable = collision.gameObject.GetComponent<IDamage>();
             if (damageable != null)

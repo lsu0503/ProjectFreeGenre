@@ -15,7 +15,7 @@ MonoBehaviour:
   monsterType: 0
   attackType: 0
   hp: 500
-  attackBody: 20
+  attackBody: 30
   attackBullet: 0
   attackDelay: 0
   speed: 1.5

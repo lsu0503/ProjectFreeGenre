@@ -16,12 +16,12 @@ public class PlayerStat : MonoBehaviour, IDamage, IDashable
 
     void Update()
     {
-        health.Add(health.passiveValue * Time.deltaTime);
-        stamina.Add(stamina.passiveValue * Time.deltaTime);
         if (health.curValue == 0f)
         {
             Die();
         }
+        health.Add(health.passiveValue * Time.deltaTime);
+        stamina.Add(stamina.passiveValue * Time.deltaTime);
     }
 
     public void Sprint(float DashPower)
