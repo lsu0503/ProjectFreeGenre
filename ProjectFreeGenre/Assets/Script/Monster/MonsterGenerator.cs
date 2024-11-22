@@ -99,6 +99,7 @@ public class MonsterGenerator : MonoBehaviour
     public void BossSpawn()
     {
         GameObject bossObj = Instantiate(boss, SetSpawnPosition(), Quaternion.identity);
+        GameManager.Instance.monsters.Add(bossObj);
         StatUpdate(bossObj);
     }
 
