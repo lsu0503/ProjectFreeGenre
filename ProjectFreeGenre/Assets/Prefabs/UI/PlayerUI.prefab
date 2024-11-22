@@ -93,7 +93,7 @@ MonoBehaviour:
   curValue: 0
   startValue: 100
   maxValue: 100
-  passiveValue: 5
+  passiveValue: 2
   Bar: {fileID: 9158492827621729683}
 --- !u!1 &2879818612714606755
 GameObject:
@@ -187,7 +187,7 @@ MonoBehaviour:
   curValue: 0
   startValue: 50
   maxValue: 60
-  passiveValue: 1
+  passiveValue: 2
   Bar: {fileID: 4986875808572319169}
 --- !u!1 &3133352744323871135
 GameObject:

@@ -18,7 +18,7 @@ MonoBehaviour:
   attackBody: 3
   attackBullet: 5
   attackDelay: 3
-  speed: 0.6
+  speed: 1
   knockBackPower: 5
   knockBackResistance: 3
   distance: 10
