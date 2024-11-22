@@ -511,11 +511,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statSO: {fileID: 11400000, guid: 8f0fd7dae67503548b31bc9ce9a6adb4, type: 2}
+  knockback: {fileID: 0}
   hpSystem: {fileID: 1114901017172765175}
   rb: {fileID: 0}
   hp: 0
   attackBody: 0
   attackBullet: 0
+  isOnKnockback: 0
 --- !u!114 &1114901017172765175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,10 +557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a5569dceb08c947bf57738410fc377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 1605369949003725974, guid: bb9b03ce020388046a3ecfdf6bc2d4e2, type: 3}
-  - {fileID: 316990271265888392, guid: f21fcfbea33f6394fb2972be14777631, type: 3}
-  - {fileID: 1509827953430938624, guid: ceb3c8827e8d1cc4f96fc9e25d646696, type: 3}
   hpSystem: {fileID: 1114901017172765175}
 --- !u!1 &8139722058821549282
 GameObject:
